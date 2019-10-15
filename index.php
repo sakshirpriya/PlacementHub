@@ -1,6 +1,8 @@
 <?php
 include 'DataBase/DB_Connection.php';
  $conn = OpenCon();
+ 
+ session_start();
 //Student Registration
 if(isset($_REQUEST["Register_as_a_Student"]))
 {
@@ -17,19 +19,13 @@ if(isset($_REQUEST["Register_as_a_Student"]))
       $message = "I am afraid that password is not matching!!!";
       echo "<script type='text/javascript'>alert('$message');</script>";
     }else{
-      $query = "SELECT email FROM StudentAuth";  
-      $result = mysqli_query($conn, $query);
-      $count=0;
-      while($row = mysqli_fetch_array($result))  
-      {  
-        if($row['email']==$email){
-          $count=$count+1;
+      $search = "SELECT email FROM StudentAuth WHERE email='$email'"; 
+      $result=mysqli_query($conn, $search);
+      $row = mysqli_num_rows($result);
+        if($row){
           $message = "Email is already existed." ;
           echo "<script type='text/javascript'>alert('$message');</script>";
-          break;
-        }
-      }
-      if($count==0){
+        }else{
 
         $InsertDataAuth = "INSERT INTO StudentAuth (email,password1,password2,status) VALUES ('$email','$password1','$password2',false)"; 
         $InsertData = "INSERT INTO StudentData (email) VALUES ('$email')"; 
@@ -40,6 +36,9 @@ if(isset($_REQUEST["Register_as_a_Student"]))
           $message = "congratulations, Your account has been created...Please login and update your profile." ;
           echo "<script type='text/javascript'>alert('$message');</script>";
 
+        }else{
+          $message = "Something, went wrong!!!!" ;
+          echo "<script type='text/javascript'>alert('$message');</script>";
         }
 
       }
@@ -113,8 +112,8 @@ if(isset($_REQUEST["login_as_a_Student"]))
     while($row = mysqli_fetch_array($result))  
     {  
       if($row['email']==$email && $row['password1']==$password){
-         session_start();
-        $_SESSION["email"] = $email;
+         
+        $_SESSION["student_email"] = $email;
 
         if($row['status']==false){
           echo "<script>
@@ -154,8 +153,8 @@ if(isset($_REQUEST["login_as_a_Mentor"]))
     {  
       if($row['email']==$email && $row['password1']==$password){
         
-         session_start();
-        $_SESSION["email"] = $email;
+         
+        $_SESSION["mentor_email"] = $email;
         if($row['status']==false){
            $message = "Please, Complete Your Profile First !!!!";
     echo "<script type='text/javascript'>alert('$message');</script>";
@@ -431,3 +430,7 @@ window.location.href='mentor/index.php';
    <?php include 'utility/js/placementhub_4.3.1.php'; ?>
   </body>
 </html>
+
+
+
+

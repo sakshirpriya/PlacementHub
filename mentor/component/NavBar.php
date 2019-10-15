@@ -19,6 +19,9 @@
   <!-- <a class="navbar-brand" href="#">Fixed navbar</a> -->
   <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
     <ul class="navbar-nav">
+     <li class="nav-item active">
+        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+      </li>
      <li class="nav-item dropdown dropdown-hover">
       <a class="nav-link dropdown-toggle" href="internship_list.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Modules
@@ -28,7 +31,7 @@
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Practice</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="add_test.php">Add Test</a>
+        <a class="dropdown-item" href="create_test_index.php">Add Test</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Mentors</a>
         <div class="dropdown-divider"></div>
@@ -43,7 +46,7 @@
     <li class="nav-item dropdown dropdown-hover">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?php
-        $email=$_SESSION['email'];
+        $email=$_SESSION['mentor_email'];
         $query = "SELECT * FROM MentorData WHERE email='$email'";  
         $result = mysqli_query($conn, $query);  
         while($row = mysqli_fetch_array($result))  
@@ -62,7 +65,9 @@
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">DashBoard</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Test</a>
+       <a class="dropdown-item" href="add_subject.php">Add Your Subject</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="create_test_index.php">Test</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="../common_files/logout.php">LogOut!!</a>
     </div>

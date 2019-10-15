@@ -30,10 +30,9 @@ if(!isset($_SESSION["mentor_email"])){
     <div class="row">
       <!-- first Dev Block starts here -->
       <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ">
-   <?php include 'component/side_profile_card.php'; ?>
+   <?php include 'component/side_profile_card.php'; ?> 
     </div>
     <!-- first Dev Block ends here -->
-
 
 
     <!-- second Div Block starts Here -->
@@ -70,48 +69,41 @@ if(!isset($_SESSION["mentor_email"])){
     <button type="button" class="btn btn-success btn-sm" style="margin-top: -30px;">Know More...</button>
   </div>
 </div>
-<form> 
-	<div class="form-group">
-    <label for="exampleFormControlTextarea1"><h3>Push Notification to all Students.{<b>Only Followers.</b>}</h3></label>
-    <textarea class="form-control shadow-lg mb-3 bg-white rounded" id="exampleFormControlTextarea1" rows="4"></textarea>
-  </div>
-  <button type="submit" class="btn btn-primary float-right">Submit</button>
-</form><br><br>
 <br>
 <!-- Mentor command start here -->
 <div class="card-deck">
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Create Test</h2></button>
-    <img src="../image/createtest.png" height="250px" class="card-img-top" alt="create_test">
+    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2>MCQ Based Test</h2></button>
+    <img src="../image/createtest.png" height="250px" class="card-img-top" alt="MCQ_Based_Test">
     <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
         <ul>
-          <li>You can create different kind of test.</li>
+          <li>This test consists of MCQ based question.</li>
           <li>You need to set marking schema.</li>
-          <li>Every test will have separate dashboard.</li>
+          <li>This test will have separate leaderboard.</li>
         </ul>
       </p>
     </div>
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="create_test_index.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="MCQ_Based_Test.php">CREATE NOW!!!</a></button>
  
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Create GD Room</h2></button>
-    <img src="../image/gdroom.png"  height="250px" class="card-img-top" alt="GD_Room">
+    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2>Essay Writing Test</h2></button>
+    <img src="../image/gdroom.png"  height="250px" class="card-img-top" alt="Essay_Writing_Test">
     <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
         <ul>
-          <li>Create Zoom Meeting ID.</li>
-          <li>Select maximum five students.</li>
-          <li>Share time, topic and rules.</li>
+          <li>You will assign topic.</li>
+          <li>Choose word limit for topic.</li>
+          <li>Give feedback to every essay writer.</li>
         </ul>
       </p>
     </div>
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_room.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="Essay_Writing_Test.php">CREATE NOW!!!</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Check CV</h2></button>
@@ -131,7 +123,7 @@ if(!isset($_SESSION["mentor_email"])){
   </div>
 </div>
 <!-- ************************************************** -->
-<div class="card-deck">
+<!-- <div class="card-deck">
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Take Interview</h2></button>
     <img src="../image/take_interview.png" height="250px" class="card-img-top" alt="take_Interview">
@@ -181,7 +173,7 @@ if(!isset($_SESSION["mentor_email"])){
    
       <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
   </div>
-</div>
+</div> -->
 <!-- Mentor command end here -->
 
 </div>
@@ -190,9 +182,7 @@ if(!isset($_SESSION["mentor_email"])){
 
 <!-- Third Div Block Starts Here -->
 <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
- 
-  <?php include 'component/about_and_message_card.php'; ?>
-
+   <?php include 'component/about_and_message_card.php'; ?>
 </div>
 <!-- Third Div Block Ends Here -->
 </div>

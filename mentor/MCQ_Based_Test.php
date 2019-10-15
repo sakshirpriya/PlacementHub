@@ -2,33 +2,97 @@
 include '../DataBase/DB_Connection.php';
 session_start();
 $conn=OpenCon();
-if(!isset($_SESSION["email"])){
+if(!isset($_SESSION["mentor_email"])){
   echo "<script>
   window.location.href='../index.php';
   alert('unauthrise access');
   </script>";
 }
- // $message =$_SESSION["email"];
- // echo "<script type='text/javascript'>alert('$message');</script>";
+if (isset($_REQUEST["reset_test_name"])) {
+  $test=$_SESSION["MCQ_Test_Name"];
+  $email=$_SESSION["mentor_email"];
+  $delete="DELETE FROM test_creator_data WHERE test_name='$test' AND email='$email'";
+$result=mysqli_query($conn, $delete);
+if($result){
+  unset($_SESSION["MCQ_Test_Name"]);
+}
+
+}
+if(isset($_REQUEST["create_test_name"])){
+ $email=$_SESSION["mentor_email"];
+$test_name =$_REQUEST["test_name"];
+
+//check if test name already exists...
+$search="SELECT * FROM test_creator_data where test_name='$test_name' AND email='$email'";
+$result=mysqli_query($conn, $search);
+$rows = mysqli_num_rows($result);
+ if($rows){
+  $message="Sorry! You can not create this test Name. Same email and test name combintion found!!!";
+ echo "<script type='text/javascript'>alert('$message');</script>";
+
+}else{
+
+if($test_name!=NULL){
+    //table name for insert ques
+$_SESSION["MCQ_Test_Name"]=$test_name;
+ $today = date("Y-m-d"); 
+ $insert="INSERT INTO test_creator_data (email,test_name,date) VALUES ('$email','$test_name','$today')";
+ if(mysqli_query($conn, $insert)){
+  $message="Congratulations. you have successfully createdd test name, Please add questions NOW !!! ";
+ echo "<script type='text/javascript'>alert('$message');</script>";
+ }
+}else{
+  $message="Please fill test name !!!";
+ echo "<script type='text/javascript'>alert('$message');</script>";
+}
+}
+}
+ 
 ?>
 <html>  
     <head>  
-        <title>PHP - Sending multiple forms data through jQuery Ajax</title>  
+        <title>Welcome to Create test.</title>  
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="icon" href="../image/title_logo.png" type="image/x-icon">
+
+  
+
        <?php include '../utility/css/placementhub_4.3.1.php'; ?>
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
     </head>  
     <body> 
-  <?php include 'NavBar.php'; ?>
+  <?php include 'component/NavBar.php'; ?>
      
         <div class="container">
    <br />
    
-   <h3 align="center">PHP - Sending multiple forms data through jQuery Ajax</a></h3><br />
-   
-   <div align="right" style="margin-bottom:5px;">
-    <button type="button" name="add" id="add" class="btn btn-success btn-xs">Add</button>
+   <h3 align="center">Welcome to Create test Pannel.</a></h3><br />
+  
+       <?php 
+   if(isset($_SESSION["MCQ_Test_Name"])){
+        echo "<h1 class='text-center'>Test Name : ".$_SESSION["MCQ_Test_Name"]."</h1>";
+   }else{
+ echo '<form method="POST">
+           <div class="form-group" align="center">
+    <label>Enter Test Name</label>
+    <input type="text" name="test_name" class="form-control"  placeholder="Enter Test Name..."><br>
+         <button type="submit" name="create_test_name" class="btn btn-success">Test Name !!!</button>
+    
+
+  </div>
+
+       </form>';
+   }
+   ?>
+
+
+  <?php if(isset($_SESSION["MCQ_Test_Name"])){
+
+    echo ' <div align="right" style="margin-bottom:5px;"><form method="POST">
+      <button type="submit" name="reset_test_name" class="btn btn-danger btn-xs">Reset Test</button>
+
+     <button type="button" name="add" id="add" class="btn btn-info btn-xs">+ Question</button></form>
    </div>
    <br />
    <form method="post" id="user_form">
@@ -53,7 +117,7 @@ if(!isset($_SESSION["email"])){
 
    <br />
   </div>
-  <div id="user_dialog" title="Add Data">
+  <div id="user_dialog" title="Add Data" class="text-center">
    <div class="form-group">
     <label>Question</label>
     <input type="text" name="Question" id="Question" class="form-control" />
@@ -92,9 +156,12 @@ if(!isset($_SESSION["email"])){
   </div>
   <div id="action_alert" title="Action">
 
-  </div>
-       <?php include '../utility/css/placementhub_4.3.1.php'; ?>
+  </div>';
+  }?>
+       <?php include '../utility/js/placementhub_4.3.1.php'; ?>
 
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     </body>  
 </html> 
 
@@ -320,7 +387,7 @@ $(document).ready(function(){
   {
    var form_data = $(this).serialize();
    $.ajax({
-    url:"insert.php",
+    url:"insert_test_mcq_question.php",
     method:"POST",
     data:form_data,
     success:function(data)
