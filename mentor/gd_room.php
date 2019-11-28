@@ -32,6 +32,7 @@ if(isset($_REQUEST["reset_gd_room_name"])){
 unset($_SESSION["gd_room_session"]);
 }
 
+
 function convertTime($str_arr) {
   $str_arr = explode (":", $str_arr); 
   $hours = $str_arr[0];
@@ -62,6 +63,26 @@ if(isset($_REQUEST["gd_room_submit"])){
   $student3=$_REQUEST["student3"];
   $student4=$_REQUEST["student4"];
   $student5=$_REQUEST["student5"];
+  if($student1){
+   $update="UPDATE gd_request SET gd_room_name='$gd_room_name',status=false WHERE mentor_email='$email' AND student_email='$student1' AND status=true";
+  mysqli_query($conn,$update);
+  }
+  if($student2){
+     $update="UPDATE gd_request SET gd_room_name='$gd_room_name',status=false WHERE mentor_email='$email' AND student_email='$student2' AND status=true";
+  mysqli_query($conn,$update);
+  }
+  if($student3){
+     $update="UPDATE gd_request SET gd_room_name='$gd_room_name',status=false WHERE mentor_email='$email' AND student_email='$student3' AND status=true";
+  mysqli_query($conn,$update);
+  }
+  if($student4){
+     $update="UPDATE gd_request SET gd_room_name='$gd_room_name',status=false WHERE mentor_email='$email' AND student_email='$student4' AND status=true";
+  mysqli_query($conn,$update);
+  }
+  if($student5){
+     $update="UPDATE gd_request SET gd_room_name='$gd_room_name',status=false WHERE mentor_email='$email' AND student_email='$student5' AND status=true";
+  mysqli_query($conn,$update);
+  }
   $zoom_id=$_REQUEST["zoom_id"];
 if($gd_room_name==NULL || $date == NULL || $time ==NULL || $zoom_id ==NULL || $student1==NULL || $student2==NULL){
   $message="(*) fields can not be empty...";
@@ -144,7 +165,8 @@ if (isset($_SESSION["gd_room_session"])) {
     <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                   <div class="form-group">
     <label >Date*:</label>
-    <input type="date" min="';echo date("Y-m-d");echo '" max="2050-12-31" class="form-control" type="text" name="date"  placeholder="Choose Your DOB..." class="form-control">
+    <input type="date" min="';echo date("Y-m-d");
+    echo '" max="2050-12-31" class="form-control" type="text" name="date"  placeholder="Choose Your DOB..." class="form-control">
   </div>
               </div>
               <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
@@ -158,21 +180,69 @@ if (isset($_SESSION["gd_room_session"])) {
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="form-group text-left">
                     <label>Student-1* </label><br>
-                    <input type="text" name="student1" class="typeahead form-control" placeholder="search email to add...">
+                     <select name="student1" class="custom-select my-1 mr-sm-2">
+    <option>Choose Mentor</option>';
+    $email =$_SESSION["mentor_email"];
+     $Search="SELECT * from gd_request where mentor_email='$email' AND status=true";
+      $Result=mysqli_query($conn,$Search);
+      while($Row=mysqli_fetch_array($Result)){
+        $student_email=$Row["student_email"];
+        $search="SELECT email as student_email, registration_no, name FROM StudentData Where email='$student_email'";
+        $result=mysqli_query($conn,$search);
+        while($row=mysqli_fetch_array($result)){
+          echo "<option value='".$row["student_email"]."'>".$row["name"]." [".$row["registration_no"]."]"."</option>";
+        }
+       
+      }
+        
+        echo '
+  </select>
                 </div>
 
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                  <div class="form-group text-left">
                     <label>Student-2* </label><br>
-                    <input type="text" name="student2" class="typeahead form-control" placeholder="search email to add...">
+                     <select name="student2" class="custom-select my-1 mr-sm-2">
+    <option value="">Choose Mentor</option>';
+     $email =$_SESSION["mentor_email"];
+     $Search="SELECT * from gd_request where mentor_email='$email' AND status=true";
+      $Result=mysqli_query($conn,$Search);
+      while($Row=mysqli_fetch_array($Result)){
+        $student_email=$Row["student_email"];
+        $search="SELECT email as student_email, registration_no, name FROM StudentData Where email='$student_email'";
+        $result=mysqli_query($conn,$search);
+        while($row=mysqli_fetch_array($result)){
+          echo "<option value='".$row["student_email"]."'>".$row["name"]." [".$row["registration_no"]."]"."</option>";
+        }
+       
+      }
+        
+        echo '
+  </select>
                 </div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
 
             <div class="form-group text-left">
                     <label>Student-3 </label><br>
-                    <input type="text" name="student3" class="typeahead form-control" placeholder="search email to add...">
+                     <select name="student3" class="custom-select my-1 mr-sm-2">
+    <option value="">Choose Mentor</option>';
+     $email =$_SESSION["mentor_email"];
+     $Search="SELECT * from gd_request where mentor_email='$email' AND status=true";
+      $Result=mysqli_query($conn,$Search);
+      while($Row=mysqli_fetch_array($Result)){
+        $student_email=$Row["student_email"];
+        $search="SELECT email as student_email, registration_no, name FROM StudentData Where email='$student_email'";
+        $result=mysqli_query($conn,$search);
+        while($row=mysqli_fetch_array($result)){
+          echo "<option value='".$row["student_email"]."'>".$row["name"]." [".$row["registration_no"]."]"."</option>";
+        }
+       
+      }
+        
+        echo '
+  </select>
                 </div>
         </div>
         </div>
@@ -180,14 +250,46 @@ if (isset($_SESSION["gd_room_session"])) {
                 <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                     <div class="form-group text-left">
                     <label>Student-4 </label><br>
-                    <input type="text" name="student4" class="typeahead form-control" placeholder="search email to add...">
+                    <select name="student4" class="custom-select my-1 mr-sm-2">
+    <option value="">Choose Mentor</option>';
+    $email =$_SESSION["mentor_email"];
+     $Search="SELECT * from gd_request where mentor_email='$email' AND status=true";
+      $Result=mysqli_query($conn,$Search);
+      while($Row=mysqli_fetch_array($Result)){
+        $student_email=$Row["student_email"];
+        $search="SELECT email as student_email, registration_no, name FROM StudentData Where email='$student_email'";
+        $result=mysqli_query($conn,$search);
+        while($row=mysqli_fetch_array($result)){
+          echo "<option value='".$row["student_email"]."'>".$row["name"]." [".$row["registration_no"]."]"."</option>";
+        }
+       
+      }
+        
+        echo '
+  </select>
                 </div>
 
             </div>
             <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
                  <div class="form-group text-left">
                     <label>Student-5 </label><br>
-                    <input type="text" name="student5" class="typeahead form-control" autocomplete="off" spellcheck="false" placeholder="search email to add...">
+                     <select name="student5" class="custom-select my-1 mr-sm-2">
+    <option value="">Choose Mentor</option>';
+     $email =$_SESSION["mentor_email"];
+     $Search="SELECT * from gd_request where mentor_email='$email' AND status=true";
+      $Result=mysqli_query($conn,$Search);
+      while($Row=mysqli_fetch_array($Result)){
+        $student_email=$Row["student_email"];
+        $search="SELECT email as student_email, registration_no, name FROM StudentData Where email='$student_email'";
+        $result=mysqli_query($conn,$search);
+        while($row=mysqli_fetch_array($result)){
+          echo "<option value='".$row["student_email"]."'>".$row["name"]." [".$row["registration_no"]."]"."</option>";
+        }
+       
+      }
+        
+        echo '
+  </select>
                 </div>
         </div>
         <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">

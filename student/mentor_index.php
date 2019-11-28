@@ -30,7 +30,7 @@ if(!isset($_SESSION["student_email"])){
 	<?php include '../utility/css/placementhub_4.3.1.php'; ?>
  
 </head>
-<body>
+<body style="background-color: #f5fcfb;">
 	<?php include 'component/NavBar.php'; ?>
   <?php include 'component/index_edit.php'; ?>
   <?php 
@@ -72,100 +72,191 @@ $row=mysqli_fetch_array($result);
  <hr>
 
 <?php 
+
+
+
 if(isset($_REQUEST["search_filter"])){
-	if(strcmp($_REQUEST["subject"], "ALL") !== 0){
-
- 	
- 	$subject_Filter=$_REQUEST["subject"];
-	$Search="SELECT MentorData.name as name, MentorData.email as email, mentor_subject_list.subject_name as subject
-FROM MentorData
-INNER JOIN mentor_subject_list ON mentor_subject_list.mentor_email=MentorData.email WHERE mentor_subject_list.subject_name='$subject_Filter'";
-$result=mysqli_query($conn,$Search);
-echo "<form method='post'>
-    <div class='table-responsive'>
-     <table class='table table-bordered' >
-     	<thead class='table-primary'>
-      <tr class='text-center'>
-       <th scope='col'>Mentor Name</th>
-      <th scope='col'>Subject Name</th>
-      <th scope='col'>View Profile</th>
-      <th scope='col'>Follow Him</th>
-      </tr>
-    </thead><tbody>";
-while ($row=mysqli_fetch_array($result)) {
-	// echo $row["name"];
-
-	echo "
-       <tr>
-      <td>".$row["name"]."</td>
-      <td>".$row["subject"]."</td>
-      <td><div align='center'>
-     <input type='submit' name='insert' id='insert' class='btn btn-success' value='View' />
-    </div></td>
-      <td> <div align='center'>
-     <input type='submit' name='insert' id='insert' class='btn btn-info' value='Follow' />
-    </div></td>
-    </tr>";
-    
-   
-}
-echo " </tbody>
-     </table>
-    </div>
-   
-   </form>";
- 
-	
-		
- }else{
-$Search="SELECT MentorData.name as name, MentorData.email as email, mentor_subject_list.subject_name as subject
+	$Search_Filter=$_REQUEST["subject"];
+		if($Search_Filter==="ALL"){
+$Search="SELECT MentorData.profilepic as profilepic,MentorData.name as name, MentorData.email as email, mentor_subject_list.subject_name as subject_name
 FROM MentorData
 INNER JOIN mentor_subject_list ON mentor_subject_list.mentor_email=MentorData.email";
 $result=mysqli_query($conn,$Search);
-echo "<form method='post'>
-    <div class='table-responsive'>
-     <table class='table table-bordered' >
-     	<thead class='table-primary'>
-      <tr class='text-center'>
-       <th scope='col'>Mentor Name</th>
-      <th scope='col'>Subject Name</th>
-      <th scope='col'>View Profile</th>
-      <th scope='col'>Follow Him</th>
-      </tr>
-    </thead><tbody>";
-while ($row=mysqli_fetch_array($result)) {
-	// echo $row["name"];
+$student_email=$_SESSION["student_email"];
+echo "
+<div class='row'>";
 
+	while ($row=mysqli_fetch_array($result)) {
+		$mentor_email=$row["email"];
+		$subject_name=$row["subject_name"];
+		$URLFORFOLLOW="followMentor.php?mentor_email=".$row["email"]."&subject_name=".$row["subject_name"];
+		$search="SELECT * from follower_list where mentor_email='$mentor_email' and student_email='$student_email' and follow_status=true and subject_name='$subject_name'";
+  $result2=mysqli_query($conn,$search);
+  $count=mysqli_num_rows($result2);
+  
+  $followstatus='';
+  if($count){
+  	$followstatus='Followed';
+  	// echo "<script type='text/javascript'>alert('$followstatus');</script>";
+  }else{
+  	$followstatus='Follow';
+  	// echo "<script type='text/javascript'>alert('$followstatus');</script>";
+  }
 	echo "
-       <tr>
-      <td>".$row["name"]."</td>
-      <td>".$row["subject"]."</td>
-      <td><div align='center'>
-     <input type='submit' name='insert' id='insert' class='btn btn-success' value='View' />
-    </div></td>
-      <td> <div align='center'>
-     <input type='submit' name='insert' id='insert' class='btn btn-info' value='Follow' />
-    </div></td>
-    </tr>";
-    
-   
-}
-echo " </tbody>
-     </table>
-    </div>
-   
-   </form>";
+	<div class='col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center' style='padding: 10px;'>
+		<img src='data:image/jpeg;base64,".base64_encode($row['profilepic'] )."' width='120px' height='120px' style='border-radius: 50%' class='text-justify'>
+		<h5 class='text-center'><b>".$row["name"]."</b> </h5>
+		<h4 class='text-center'>".$row["subject_name"]."</h4>
+		<form class='form-inline'>
+ 	  <div class='col text-center'>
+ 		<a class='btn btn-info' href='".$URLFORFOLLOW."' style='border-radius: 20px;border: 2px solid grey; width: 110px;'>";echo $followstatus; echo "</a>
+ 		<a class='btn btn-info' data-toggle='modal' data-target='#editProfile' style='border-radius: 20px;border: 2px solid grey;width: 110px; '>Know More</a>
+ 	</div>
+ 	</form>
+ 		</div>";
+	
+// 	$count=$count+1;
 
-
+// 	if($count%3==0){
+// 	echo "<h1>ok</h1><br>";
+// }
+	
 
 }
+echo "</div>";
+		}else{
+			$Search="SELECT MentorData.profilepic as profilepic,MentorData.name as name, MentorData.email as email, mentor_subject_list.subject_name as subject_name
+FROM MentorData
+INNER JOIN mentor_subject_list ON mentor_subject_list.mentor_email=MentorData.email WHERE subject_name='$Search_Filter'";
+$result=mysqli_query($conn,$Search);
+$student_email=$_SESSION["student_email"];
+echo "
+<div class='row'>";
 
+	while ($row=mysqli_fetch_array($result)) {
+		$mentor_email=$row["email"];
+		$subject_name=$row["subject_name"];
+		$URLFORFOLLOW="followMentor.php?mentor_email=".$row["email"]."&subject_name=".$row["subject_name"];
+		$search="SELECT * from follower_list where mentor_email='$mentor_email' and student_email='$student_email' and follow_status=true and subject_name='$subject_name'";
+  $result2=mysqli_query($conn,$search);
+  $count=mysqli_num_rows($result2);
+  
+  $followstatus='';
+  if($count){
+  	$followstatus='Followed';
+  	// echo "<script type='text/javascript'>alert('$followstatus');</script>";
+  }else{
+  	$followstatus='Follow';
+  	// echo "<script type='text/javascript'>alert('$followstatus');</script>";
+  }
+	echo "
+	<div class='col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center' style='padding: 10px;'>
+		<img src='data:image/jpeg;base64,".base64_encode($row['profilepic'] )."' width='120px' height='120px' style='border-radius: 50%' class='text-justify'>
+		<h5 class='text-center'><b>".$row["name"]."</b> </h5>
+		<h4 class='text-center'>".$row["subject_name"]."</h4>
+		<form class='form-inline'>
+ 	  <div class='col text-center'>
+ 		<a class='btn btn-info' href='".$URLFORFOLLOW."' style='border-radius: 20px;border: 2px solid grey; width: 110px;'>";echo $followstatus; echo "</a>
+ 		<a class='btn btn-info' data-toggle='modal' data-target='#editProfile' style='border-radius: 20px;border: 2px solid grey;width: 110px; '>Know More</a>
+ 	</div>
+ 	</form>
+ 		</div>";
+	
+// 	$count=$count+1;
+
+// 	if($count%3==0){
+// 	echo "<h1>ok</h1><br>";
+// }
+	
+
+}
+echo "</div>";
+		}
+
+}else{
+	$Search="SELECT MentorData.profilepic as profilepic,MentorData.name as name, MentorData.email as email, mentor_subject_list.subject_name as subject_name
+FROM MentorData
+INNER JOIN mentor_subject_list ON mentor_subject_list.mentor_email=MentorData.email";
+$result=mysqli_query($conn,$Search);
+$student_email=$_SESSION["student_email"];
+echo "
+<div class='row'>";
+
+	while ($row=mysqli_fetch_array($result)) {
+		$mentor_email=$row["email"];
+		$subject_name=$row["subject_name"];
+		$URLFORFOLLOW="followMentor.php?mentor_email=".$row["email"]."&subject_name=".$row["subject_name"];
+		$search="SELECT * from follower_list where mentor_email='$mentor_email' and student_email='$student_email' and follow_status=true and subject_name='$subject_name'";
+  $result2=mysqli_query($conn,$search);
+  $count=mysqli_num_rows($result2);
+  
+  $followstatus='';
+  if($count){
+  	$followstatus='Followed';
+  	// echo "<script type='text/javascript'>alert('$followstatus');</script>";
+  }else{
+  	$followstatus='Follow';
+  	// echo "<script type='text/javascript'>alert('$followstatus');</script>";
+  }
+	echo "
+	<div class='col-xl-4 col-lg-4 col-md-6 col-sm-12 text-center' style='padding: 10px;'>
+		<img src='data:image/jpeg;base64,".base64_encode($row['profilepic'] )."' width='120px' height='120px' style='border-radius: 50%' class='text-justify'>
+		<h5 class='text-center'><b>".$row["name"]."</b> </h5>
+		<h4 class='text-center'>".$row["subject_name"]."</h4>
+		<form class='form-inline'>
+ 	  <div class='col text-center'>
+ 		<a class='btn btn-info' href='".$URLFORFOLLOW."' style='border-radius: 20px;border: 2px solid grey; width: 110px;'>";echo $followstatus; echo "</a>
+ 		<a class='btn btn-info' data-toggle='modal' data-target='#editProfile' style='border-radius: 20px;border: 2px solid grey;width: 110px; '>Know More</a>
+ 	</div>
+ 	</form>
+ 		</div>";
+	
+// 	$count=$count+1;
+
+// 	if($count%3==0){
+// 	echo "<h1>ok</h1><br>";
+// }
+	
+
+}
+echo "</div>";
 }
 ?>
-
+<!-- login as a Employee Modal start -->
+<div class="modal fade" id="EmployeeLogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Please Enter the Cridentials:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+           <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" name="mentor_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  
+         <button type="submit" name="login_as_a_Mentor" class="btn btn-success">login!!!</button>
+       </form>
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="submit" name="submit" class="btn btn-primary">Register!!!</button>
+      </div> -->
+    </div>
+  </div>
+</div>
+<!-- login as a Employee Modal end -->
 
  	<!-- container ends here -->
  </div>
 <?php include '../utility/js/placementhub_4.3.1.php'; ?>
 </body>
 </html>
+

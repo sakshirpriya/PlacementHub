@@ -11,7 +11,7 @@
 <nav class="navbar  navbar-expand-lg navbar-light bg-light">
   <div class="container">
    <a class="navbar-brand" href="../index.php">
-    <img src="../image/logo.png" width="120px" height="60px" class="d-inline-block align-top" alt="PlacementHub">
+    <img src="http://13.126.165.2/image/logo.png" width="120px" height="60px" class="d-inline-block align-top" alt="PlacementHub">
   </a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,6 +28,8 @@
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <a class="dropdown-item" href="#">Request Interview</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="http://13.126.165.2/student/MentorRatings/index.php">Rate Mentor</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Practice</a>
         <div class="dropdown-divider"></div>

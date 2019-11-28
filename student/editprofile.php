@@ -108,8 +108,10 @@ if(isset($_REQUEST["submit"])){
 
 				 $insert = $conn->query("UPDATE StudentAuth SET status=true where email='$email'");
             if($insert){
-              $message = "Now you can login";
-              echo "<script type='text/javascript'>alert('$message');</script>";
+              $_SESSION["student_email"] = $email;
+              echo "<script>
+	window.location.href='index.php';
+	</script>";
             }
           else{
 

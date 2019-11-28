@@ -32,6 +32,9 @@ if(!isset($_SESSION["student_email"])){
     .datacss{
           margin-left: 10px;
     }
+    a{
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -174,10 +177,10 @@ $row=mysqli_fetch_array($result);
       </p>
     </div> -->
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_room.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_index.php">Know More...</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h3>Check CV</h3></button>
+    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h3>Check CV</h3></button>
     <img src="../image/cvcheck.png" height="150px" class="card-img-top" alt="cv_check">
     <!-- <div class="card-body">
      <h5 class="card-title"><b>Key Notes:</b></h5>
@@ -190,31 +193,21 @@ $row=mysqli_fetch_array($result);
       </p>
     </div> -->
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="cvCheck/index.php">Know More...</a></button>
   </div>
 </div>
 <!-- first three cards ends here -->
 <!-- second three cards start here -->
 <div class="card-deck">
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h3>Create Test</h3></button>
-    <img src="../image/createtest.png" height="150px" class="card-img-top" alt="create_test">
-    <!-- <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>You can create different kind of test.</li>
-          <li>You need to set marking schema.</li>
-          <li>Every test will have separate dashboard.</li>
-        </ul>
-      </p>
-    </div>
-    -->
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="create_test_index.php">Know More...</a></button>
+    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h3>Request PI</h3></button>
+    <img src="../image/createtest.png" height="150px" class="card-img-top" alt="Request PI">
+  
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="PI_Request.php">Know More...</a></button>
  
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h3>Create GD Room</h3></button>
+    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h3>Mentor Rating</h3></button>
     <img src="../image/gdroom.png"  height="150px" class="card-img-top" alt="GD_Room">
   <!--   <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
@@ -227,7 +220,7 @@ $row=mysqli_fetch_array($result);
       </p>
     </div> -->
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_room.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="MentorList.php">Know More...</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h3>Check CV</h3></button>

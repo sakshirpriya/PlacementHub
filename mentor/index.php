@@ -98,7 +98,7 @@ if(!isset($_SESSION["mentor_email"])){
  
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Create GD Room</h2></button>
+    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>GD Room</h2></button>
     <img src="../image/gdroom.png"  height="250px" class="card-img-top" alt="GD_Room">
     <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
@@ -111,7 +111,7 @@ if(!isset($_SESSION["mentor_email"])){
       </p>
     </div>
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_room.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_index.php">Know More...</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Check CV</h2></button>
@@ -127,7 +127,7 @@ if(!isset($_SESSION["mentor_email"])){
       </p>
     </div>
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="cvCheck/index.php">Know More...</a></button>
   </div>
 </div>
 <!-- ************************************************** -->
@@ -135,18 +135,8 @@ if(!isset($_SESSION["mentor_email"])){
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Take Interview</h2></button>
     <img src="../image/take_interview.png" height="250px" class="card-img-top" alt="take_Interview">
-    <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>Accept take interview request.</li>
-          <li>Create Zoom Meeting ID.</li>
-          <li>Share time and other details.</li>
-        </ul>
-      </p>
-    </div>
-    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+       
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="PI_Request.php">Know More...</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Must Do Ques</h2></button>

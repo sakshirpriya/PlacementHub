@@ -52,7 +52,7 @@ if(isset($_REQUEST["submit"])){
 		echo "<script type='text/javascript'>alert('$message');</script>";
 	}else{
 		$email=$_SESSION['mentor_email'];
-		echo "<script type='text/javascript'>alert('$email');</script>";
+		// echo "<script type='text/javascript'>alert('$email');</script>";
 
 		$InsertData = "UPDATE MentorData SET dob='$dob',designation='$designation',contact_no='$contact_no',cabin='$cabin',joining_date='$joining_date',about='$about',message_for_student='$message_for_student',linkedin='$linkedin',github='$github',facebook='$facebook',twitter='$twitter' WHERE email='$email'";
 
@@ -63,8 +63,8 @@ if(isset($_REQUEST["submit"])){
    	//profile pic
 	//Update DP
 			if(isset($_POST["submit"])){
-				$message = "image is not added!" ;
-				echo "<script type='text/javascript'>alert('$message');</script>";
+				// $message = "image is not added!" ;
+				// echo "<script type='text/javascript'>alert('$message');</script>";
 				$check = getimagesize($_FILES["profilepic"]["tmp_name"]);
 				if($check !== false){
 					$image = $_FILES['profilepic']['tmp_name'];
@@ -73,12 +73,15 @@ if(isset($_REQUEST["submit"])){
 					$conndition=$_SESSION["mentor_email"];
 					$insert = $conn->query("UPDATE MentorData SET profilepic='$imgContent' where email='$conndition'");
 					if($insert){
-						$message = "You have Completed Your Profile, Now You can Login";
-						echo "<script type='text/javascript'>alert('$message');</script>";
+						
 						$insert = $conn->query("UPDATE MentorAuth SET status=true where email='$conndition'");
 						if($insert){
-							$message = "status Updated";
-							echo "<script type='text/javascript'>alert('$message');</script>";
+							$message = "You have Completed Your Profile, Now You can Login";
+						echo "<script type='text/javascript'>alert('$message');</script>";
+						echo "<script>
+	window.location.href='../index.php';
+
+	</script>";
 						}
 					}else{
 

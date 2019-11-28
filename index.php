@@ -50,10 +50,11 @@ if(isset($_REQUEST["Regitser_as_a_Mentor"]))
 {
 
   $email= mysqli_real_escape_string($conn, $_REQUEST["mentor_email"]);
+  $name= mysqli_real_escape_string($conn, $_REQUEST["mentor_name"]);
   $password1= md5(mysqli_real_escape_string($conn, $_REQUEST["password1"]));
   $password2= md5(mysqli_real_escape_string($conn, $_REQUEST["password2"]));
   $organization= mysqli_real_escape_string($conn, $_REQUEST["organization_name"]);
-  if($email==NULL || $password1== NULL || $password2==NULL||$organization==NULL){
+  if($email==NULL ||$name==NULL || $password1== NULL || $password2==NULL||$organization==NULL){
     $message = "Some Requried field(*) is Empty!";
     echo "<script type='text/javascript'>alert('$message');</script>";
   }
@@ -79,7 +80,7 @@ if(isset($_REQUEST["Regitser_as_a_Mentor"]))
       if($count==0){
 
         $InsertDataAuth = "INSERT INTO MentorAuth (email,password1,password2,status) VALUES ('$email','$password1','$password2',false)"; 
-        $InsertData = "INSERT INTO MentorData (email,organization) VALUES ('$email','$organization')"; 
+        $InsertData = "INSERT INTO MentorData (email,name,organization) VALUES ('$email','$name','$organization')"; 
 
         if(mysqli_query($conn, $InsertData) && mysqli_query($conn, $InsertDataAuth))  
         {  
@@ -151,6 +152,13 @@ if(isset($_REQUEST["login_as_a_Mentor"]))
     $result = mysqli_query($conn, $query);
     while($row = mysqli_fetch_array($result))  
     {  
+    //   $p=$row['password1'];
+    //   $e=$row['email'];
+    // echo "<script type='text/javascript'>alert('$password');</script>";
+    // echo "<script type='text/javascript'>alert('$p');</script>";
+    // echo "<script type='text/javascript'>alert('$email');</script>";
+    // echo "<script type='text/javascript'>alert('$e');</script>";
+
       if($row['email']==$email && $row['password1']==$password){
         
          
@@ -282,8 +290,9 @@ window.location.href='mentor/index.php';
     <label for="exampleInputPassword1">Password</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
-  
-         <button type="submit" name="login_as_a_Student" class="btn btn-success">login!!!</button>
+  <button type="submit" name="login_as_a_Student" class="btn btn-success">login!!!</button> 
+  <a href="StudentForgetPassword.php">Forget Password ?</a>
+         
        </form>
       </div>
       <!-- <div class="modal-footer">
@@ -313,8 +322,9 @@ window.location.href='mentor/index.php';
     <label for="exampleInputPassword1">Password</label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
   </div>
-  
-         <button type="submit" name="login_as_a_Mentor" class="btn btn-success">login!!!</button>
+   <button type="submit" name="login_as_a_Mentor" class="btn btn-success">login!!!</button> 
+  <a href="MentorForgetPassword.php">Forget Password ?</a>
+        
        </form>
       </div>
       <!-- <div class="modal-footer">
@@ -376,6 +386,10 @@ window.location.href='mentor/index.php';
       </div>
       <div class="modal-body">
         <form method="POST">
+               <div class="form-group">
+    <label >Full Name</label>
+    <input type="text" name="mentor_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+  </div>
            <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" name="mentor_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
