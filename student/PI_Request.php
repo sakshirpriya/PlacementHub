@@ -8,14 +8,6 @@ if(!isset($_SESSION["student_email"])){
 	alert('unauthrise access');
 	</script>";
 }
- 
-
-
-
-
-
-
-
  // $message =$_SESSION["email"];
  // echo "<script type='text/javascript'>alert('$message');</script>";
 ?>
@@ -159,14 +151,14 @@ $row=mysqli_fetch_array($result);
     <img src="../image/gdroom.png"  height="150px" class="card-img-top" alt="Schedule">
   
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="Check_Schedule.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="Check_PI_Schedule.php">Know More...</a></button>
   </div>
  <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h3>Feedback</h3></button>
     <img src="../image/gdroom.png"  height="150px" class="card-img-top" alt="GD_Room">
   
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="Check_Feedback.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="PI_Mentor_List.php">Know More...</a></button>
   </div>
 </div>
 </div>

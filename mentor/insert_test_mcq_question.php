@@ -12,7 +12,7 @@ if(isset($_SESSION["MCQ_Test_Name"])){
  echo "<script type='text/javascript'>alert('$test_name');</script>";
  echo "<script type='text/javascript'>alert('$email');</script>";
 
-$connect = new PDO("mysql:host=localhost;dbname=PlacementHub", "root", "Nikhil123.@");
+$connect = new PDO("mysql:host=localhost;dbname=PlacementHub", "root", "Placement123@");
 
 $query = "
 INSERT INTO mcq_test_question_bank 

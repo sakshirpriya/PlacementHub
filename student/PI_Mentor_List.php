@@ -2,12 +2,19 @@
 include '../DataBase/DB_Connection.php';
 session_start();
 $conn=OpenCon();
-if(!isset($_SESSION["mentor_email"])){
+if(!isset($_SESSION["student_email"])){
 	echo "<script>
-	window.location.href='../../index.php';
+	window.location.href='../index.php';
 	alert('unauthrise access');
 	</script>";
 }
+
+
+
+
+
+
+
 
  // $message =$_SESSION["email"];
  // echo "<script type='text/javascript'>alert('$message');</script>";
@@ -48,31 +55,33 @@ if(!isset($_SESSION["mentor_email"])){
 <body>
 	<?php include 'component/NavBar.php'; ?>
 	 
-    <div class="container"><br>
-        <h1 align="center">This Page Contains All Your Pending Request</h1>
-        <h4 class="text-center">Please Contact With Admin, If Any Issue</h4><br>
+    <div class="container-fluid"><br>
+        <h1 align="center">This Page Listed All PI Feedbacks</h1>
+        <h4 class="text-center">Please Contact With Admin, If Any Upload Missed</h4><br>
 <?php
- $mentor_email=$_SESSION["mentor_email"];
+ $student_email=$_SESSION["student_email"];
 // Query for a list of all existing files
-$sql = "SELECT * FROM `gd_request` WHERE `mentor_email`='$mentor_email' AND `status`=true";
+$sql = "SELECT * FROM `PersonalInterview` WHERE `student_email`='$student_email' AND `feedback`=true";
 $result = $conn->query($sql);
  
 // Check if it was successfull
 if($result) {
     // Make sure there are some files in there
     if($result->num_rows == 0) {
-        echo "<h1 class='text-center' style='color:red;'>There are no request for GD as of now!!!!</h1>";
+        echo "<h1 class='text-center' style='color:red;'>No Feedback Found!!!!</h1>";
     }
     else {
         // Print the top of a table
         echo '<div class="table-responsive text-center"><table class="table table-hover table-striped table-dark""  style="color:white;">
   <thead class="thead-dark">
     <tr>
-      <th scope="col"><b>Student</b></th>
-      <th scope="col"><b>Regist.No</b></th>
+      <th scope="col"><b>PI-ID</b></th>
       <th scope="col"><b>Mentor</b></th>
-      <th scope="col"><b>S-Remarks</b></th>
-      <th scope="col"><b>Allocate</b></th>
+      <th scope="col"><b>Name</b></th>
+      <th scope="col"><b>Email</b></th>
+      <th scope="col"><b>student</b></th>
+      <th scope="col"><b>Name</b></th>
+      <th scope="col"><b>Feedback</b></th>
 
       
       
@@ -83,40 +92,39 @@ if($result) {
  
         // Print each file
         while($row = $result->fetch_assoc()) {
-        	$student_email=$row["student_email"];
-        	$SearchStudentData="SELECT * FROM StudentData WHERE email='$student_email'";
-$StudentDataResult=mysqli_query($conn,$SearchStudentData);
-$Data=mysqli_fetch_array($StudentDataResult);
+        	$mentor_email=$row["mentor_email"];
+        	$SearchMentorData="SELECT * FROM MentorData WHERE email='$mentor_email'";
+$MentorDataResult=mysqli_query($conn,$SearchMentorData);
+$Data=mysqli_fetch_array($MentorDataResult);
 
 
         	 // echo "<script type='text/javascript'>alert('$message');</script>";
-						$studentName=$Data["name"];
-						$registration_no=$Data["registration_no"];
-						$_SESSION["studentName"]=$studentName;
-						$_SESSION["registration_no"]=$registration_no;
-						$_SESSION["studentemail"]=$row['student_email'];
+						$MentorName=$Data["name"];
+                        $profilepic='<img src="data:image/jpeg;base64,'.base64_encode($Data['profilepic'] ).'" class="rounded-circle" height="35px" width="35px" class="img-thumnail" />';
+						$Email=$Data["email"];
 						
+            $student_email=$row['student_email']?$row['student_email']:"NA";
+			$selectDataStudent="SELECT * from StudentData WHERE email='$student_email'";			
+           $studentDataResult=mysqli_query($conn,$selectDataStudent);
+$StudentData=mysqli_fetch_array($studentDataResult);
+             $Studentprofilepic='<img src="data:image/jpeg;base64,'.base64_encode($StudentData['profilepic'] ).'" class="rounded-circle" height="35px" width="35px" class="img-thumnail" />';
+            $studentName=$StudentData['name']?$StudentData['name']:"NA";
 
-           
-            $Mentor=$row['mentor_email']?$row['mentor_email']:"NA";
-            
-            $MentorName="SELECT name FROM MentorData WHERE email='$Mentor'";
-            $MentorName=mysqli_query($conn,$MentorName);
-$MentorName=mysqli_fetch_array($MentorName);
-$Mentor=$MentorName['name']?$MentorName['name']:"NA";
-            $RequestMessage=$row['remark']?$row['remark']:"NA";
-            $GiveFeedback="<a href='gd_room.php'><i class='fa fa-clock-o fa-2x' aria-hidden='true' style='color:pink;'></i></i></a>";
+            $GiveFeedback="<a href='Full_PI_Feedback.php?id={$row['id']}&email={$row['student_email']}'><i class='fa fa-commenting-o fa-2x' aria-hidden='true' style='color:pink;'></i></i></a>";
            
             echo "
                 <tr>
                     
                     
+                    <td>{$row['id']}</td>
+                    <td>{$profilepic}</td>
+                    <td>{$MentorName}</td>
+                    <td>{$Email}</td>
                     
+                
                     <td>{$studentName}</td>
-                    <td>{$registration_no}</td>
-                  
-                    <td>{$Mentor}</td>
-                    <td>{$RequestMessage}</td>
+                    <td>{$Studentprofilepic}</td>
+                    
                     
                     <td>{$GiveFeedback}</td>
 

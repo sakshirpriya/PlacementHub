@@ -146,7 +146,7 @@ $row=mysqli_fetch_array($result);
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-success btn-sm"><h2>Request gd Room</h2></button>
     <img src="../image/createtest.png" height="150px" class="card-img-top" alt="create_test">
-    <div class="card-body">
+   <!--  <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
         <ul>
@@ -155,7 +155,7 @@ $row=mysqli_fetch_array($result);
           <li>Every test will have separate dashboard.</li>
         </ul>
       </p>
-    </div>
+    </div> -->
    
       <button type="button" class="btn btn-success btn-sm" style="margin-top: -30px;"><a href="request_gd.php">Know More...</a></button>
  
@@ -163,7 +163,7 @@ $row=mysqli_fetch_array($result);
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-success btn-sm"><h2>Check TimeTable</h2></button>
     <img src="../image/gdroom.png"  height="150px" class="card-img-top" alt="GD_Room">
-    <div class="card-body">
+   <!--  <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
         <ul>
@@ -172,14 +172,14 @@ $row=mysqli_fetch_array($result);
           <li>Check Your Result.</li>
         </ul>
       </p>
-    </div>
+    </div> -->
     
       <button type="button" class="btn btn-success btn-sm" style="margin-top: -30px;"><a href="gd_timetable.php">Know More...</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-success btn-sm"><h2>GD DashBoard</h2></button>
     <img src="../image/cvcheck.png" height="150px" class="card-img-top" alt="cv_check">
-    <div class="card-body">
+    <!-- <div class="card-body">
      <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
         <ul>
@@ -188,9 +188,9 @@ $row=mysqli_fetch_array($result);
           <li>Give others CV for reference.</li>
         </ul>
       </p>
-    </div>
+    </div> -->
    
-      <button type="button" class="btn btn-success btn-sm" style="margin-top: -30px;">Know More...</button>
+      <button type="button" class="btn btn-success btn-sm" style="margin-top: -30px;"><a href="gd_feedback.php">Know More...</a></button>
   </div>
 </div>
 <!-- first three cards ends here -->

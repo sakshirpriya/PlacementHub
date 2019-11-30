@@ -79,6 +79,7 @@ if(!isset($_SESSION["mentor_email"])){
 <br>
 <!-- Mentor command start here -->
 <div class="card-deck">
+  
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2>Accept</h2></button>
     <img src="../image/createtest.png" height="250px" class="card-img-top" alt="create_test">
@@ -95,9 +96,9 @@ if(!isset($_SESSION["mentor_email"])){
       <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="Check_PI_Schedule.php">Click Here</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2>Feedback</h2></button>
+    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2>Give Feedback</h2></button>
     <img src="../image/cvcheck.png" height="250px" class="card-img-top" alt="cv_check">
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="Check_PI_Feedback.php">Click Here</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="PI_Student_List.php">Click Here</a></button>
   </div>
 </div>
 

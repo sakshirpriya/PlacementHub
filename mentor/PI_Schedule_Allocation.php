@@ -87,36 +87,65 @@ function convertTime($str_arr) {
   return $returnValue;
 }
 if(isset($_REQUEST["submit"])){
-echo "<script>alert('$id')</script>";
+//echo "<script>alert('$id')</script>";
     $Date=$_REQUEST["date"];
-    echo "<script>alert('$Date')</script>";
-    $Time=convertTime($_REQUEST["time"]);
-    echo "<script>alert('$Time')</script>";
+    // echo "<script>alert('$Date')</script>";
+  
+    $Time=$_REQUEST["time"];
 
+    $SkypeId=$_REQUEST["SkypeId"];
+    // echo "<script>alert('$SkypeId')</script>";
+    $ZoomId=$_REQUEST["ZoomId"];
+    // echo "<script>alert('$ZoomId')</script>";
     $mentormessage=$_REQUEST["mentormessage"];
-    echo "<script>alert('$mentormessage')</script>";
-    if($Date ==NULL || $Time ==NULL){
-        $message="Date and Time can't empty!!!";
-    echo "<script>alert('$message')</script>";
-    }else{
-        if($skype ==NULL && $zoom==NULL){
-    $message="SkypeId or ZoomId can't empty!!!";
-    echo "<script>alert('$message')</script>";
-        }else{
-            $skypeId="live."+$skypeId;
-            $ZoomId="https://zoom.us/j/"+$ZoomId;
-            $Insert="UPDATE PersonalInterview SET date='$Date',time='$Time',mentormessage='$mentormessage',schedule=1,skypeId='$skypeId
+    // echo "<script>alert('$mentormessage')</script>";
+    // 
+    if($SkypeId==NULL && $ZoomId== NULL){
+    $message = "Please Provide atleast SkypeId or ZoomId!";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+  }else{
+     if($Date==NULL || $Time==NULL){
+    $message = "Date/Time is missing!";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+  }else{
+
+    $Time=convertTime($Time);
+    $SkypeId=$SkypeId?"live:".$SkypeId:"#";
+    $ZoomId=$ZoomId?"https://zoom.us/j/".$ZoomId:"#";
+        $UPDATE="UPDATE PersonalInterview SET date='$Date',time='$Time',mentormessage='$mentormessage',schedule=1,skypeId='$SkypeId
             ',ZoomId='$ZoomId' WHERE id=$id";
-        if(mysqli_query($conn,$Insert)){
+        if(mysqli_query($conn,$UPDATE)){
            $message="Successfully added PI!!!";
     echo "<script>alert('$message')</script>";  
         }else{
             $message="Something Went Wrong!!!";
     echo "<script>alert('$message')</script>"; 
         }
+  }
+     
+   
+  }
+  
+    // if($Date==NULL){
+    //     $message="Date and Time can't empty!!!";
+    // echo "<script>alert('$message')</script>";
+    // }else{
+    //   $message="Else BLock";
+    // echo "<script>alert('$message')</script>";
+    //     if(strlen($SkypeId) < 6 ||  strlen($ZoomId)<6){
+    // $message="SkypeId or ZoomId can't empty!!!";
+    // echo "<script>alert('$message')</script>";
+    //     }else{
+    //         $SkypeId="live."+$SkypeId;
+    //         $ZoomId="https://zoom.us/j/"+$ZoomId;
+    // echo "<script>alert('$SkypeId')</script>";
 
-        }
-    }
+    // echo "<script>alert('$ZoomId')</script>";
+
+    
+
+    //     }
+    // }
 
 }
 ?>
@@ -239,7 +268,7 @@ echo "<script>alert('$id')</script>";
          <div class="input-group-prepend"><label class="sr-only" for="inlineFormInputGroup">Username</label>
           <div class="input-group mb-2">
             <div class="input-group-prepend">
-              <div class="input-group-text">live.</div>
+              <div class="input-group-text">live:</div>
             </div>
              <input type="text" class="form-control" name="SkypeId" placeholder="sakhi.priya">
           </div>

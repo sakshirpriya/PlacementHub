@@ -2,21 +2,13 @@
 include '../DataBase/DB_Connection.php';
 session_start();
 $conn=OpenCon();
-if(!isset($_SESSION["mentor_email"])){
+if(!isset($_SESSION["student_email"])){
 	echo "<script>
 	window.location.href='../../index.php';
 	alert('unauthrise access');
 	</script>";
 }
-
-
-
-
-
-
-
-
- // $message =$_SESSION["email"];
+// $message =$_SESSION["email"];
  // echo "<script type='text/javascript'>alert('$message');</script>";
 ?>
 
@@ -59,8 +51,8 @@ if(!isset($_SESSION["mentor_email"])){
           $data=mysqli_fetch_array($Data);
         return $data;
        }
-$mentor_email=$_SESSION["mentor_email"];
- $search_pi_schedule="SELECT * from PersonalInterview WHERE mentor_email='$mentor_email' AND feedback=false AND schedule=true";
+$student_email=$_SESSION["student_email"];
+ $search_pi_schedule="SELECT * from PersonalInterview WHERE student_email='$student_email' AND feedback=false AND schedule=true";
  $Result=mysqli_query($conn,$search_pi_schedule);
  while($Row=mysqli_fetch_array($Result)){
   // echo $Row["email"]."<br>";
@@ -78,9 +70,7 @@ $mentor_email=$_SESSION["mentor_email"];
 echo "<div style='border: 2px solid grey;'>
           <h2 class='text-center' style='background-color: #303030;color: white;'>Personal Interview ID : ";echo $Row["id"];
           echo "</h2>";
-          if($Row["topic"]){
-            echo "<p style='background-color: #fc0373;color: white;margin-top: 5px;'><b style='margin-left: 5px;'>Topic : </b>".$Row["topic"]."</p>";
-          }
+         
           echo "<div class='row'>
             <div class='col-xl-6 col-lg-6 col-md-12 col-sm-12 text-center' style='border-right:2px solid grey;'>
               <p  class='text-center' style='font-weight: bold;background-color: #303030;color:white;margin-left: 15px;'>Student Name</p>";
