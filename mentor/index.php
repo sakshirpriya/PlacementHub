@@ -2,7 +2,7 @@
 include '../DataBase/DB_Connection.php';
 session_start();
 $conn=OpenCon();
-if(!isset($_SESSION["email"])){
+if(!isset($_SESSION["mentor_email"])){
 	echo "<script>
 	window.location.href='../index.php';
 	alert('unauthrise access');
@@ -17,10 +17,12 @@ if(!isset($_SESSION["email"])){
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../image/title_logo.png" type="image/x-icon">
+  
 	<?php include '../utility/css/placementhub_4.3.1.php'; ?>
 </head>
 <body>
-	<?php include 'NavBar.php'; ?>
+	<?php include 'component/NavBar.php'; ?>
 	<hr>
   <div class="container-fluid">
 
@@ -28,26 +30,10 @@ if(!isset($_SESSION["email"])){
     <div class="row">
       <!-- first Dev Block starts here -->
       <div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 ">
-       <div class="sticky-top shadow-lg mb-5 bg-white rounded" style="border: 1px solid grey;">
-
-        <div class="text-center">
-          <img src="https://cdn.pixabay.com/photo/2018/01/15/07/51/woman-3083384_960_720.jpg" width="200px" height="200px" alt="ProfilePic" style=" border-radius: 50%;margin-top: 10px;">
-        </div>
-        <p class="text-center font-weight-bold" style="border-bottom: 1px solid grey;border-top: 1px solid grey;margin-top: 5px;">Avul Pakir Jainulabdeen Abdul Kalam</p>
-        <p class="text-center" style="border-bottom: 1px solid grey;">Product Intern (Backend) at Egnify Technologies Pvt Ltd </p>
-        <p class="text-center" style="border-bottom: 1px solid grey;"><b>Joining Date: </b> 20-10-1998</p>
-        <p class="text-center" style="border-bottom: 1px solid grey;"><b>Mobile:</b>9628032001</p>
-        <p class="text-center" style="border-bottom: 1px solid grey;"><b>Cabin:</b>34 Block 415-12</p>
-        <p class="text-center" style="border-bottom: 1px solid grey;"><b>Mobile:</b>9628032001</p>
-        <div class="text-center">
-          <a href=""><i class="fa fa-linkedin-square fa-2x" style="color: #1c85bd"></i></a>
-          <a href=""><i class="fa fa-github-square fa-2x" style="color: #0a0a0a"></i></a>
-          <a href=""><i class="fa fa-facebook-official fa-2x" style="color: #165bc9;"></i></a>
-          <a href=""><i class="fa fa-twitter-square fa-2x" style="color: #0eaeed"></i></a>
-        </div>
-      </div>
+   <?php include 'component/side_profile_card.php'; ?>
     </div>
     <!-- first Dev Block ends here -->
+
 
 
     <!-- second Div Block starts Here -->
@@ -101,18 +87,18 @@ if(!isset($_SESSION["email"])){
       <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
         <ul>
-          <li>This test consists of MCQ based question.</li>
+          <li>You can create different kind of test.</li>
           <li>You need to set marking schema.</li>
           <li>Every test will have separate dashboard.</li>
         </ul>
       </p>
     </div>
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="add_test.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="create_test_index.php">Know More...</a></button>
  
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Create GD Room</h2></button>
+    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>GD Room</h2></button>
     <img src="../image/gdroom.png"  height="250px" class="card-img-top" alt="GD_Room">
     <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
@@ -125,7 +111,7 @@ if(!isset($_SESSION["email"])){
       </p>
     </div>
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_index.php">Know More...</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Check CV</h2></button>
@@ -141,7 +127,7 @@ if(!isset($_SESSION["email"])){
       </p>
     </div>
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="cvCheck/index.php">Know More...</a></button>
   </div>
 </div>
 <!-- ************************************************** -->
@@ -149,18 +135,8 @@ if(!isset($_SESSION["email"])){
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Take Interview</h2></button>
     <img src="../image/take_interview.png" height="250px" class="card-img-top" alt="take_Interview">
-    <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>Accept take interview request.</li>
-          <li>Create Zoom Meeting ID.</li>
-          <li>Share time and other details.</li>
-        </ul>
-      </p>
-    </div>
-    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+       
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="PI_Request.php">Know More...</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Must Do Ques</h2></button>
@@ -203,14 +179,10 @@ if(!isset($_SESSION["email"])){
 
 
 <!-- Third Div Block Starts Here -->
-<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12"><div class="sticky-top">
-  <div style="border: 1px solid grey;" class="shadow-lg mb-5 bg-white rounded"> <button type="button" style="width: 100%;" class="btn btn-success btn-sm" style="margin-top: -30px;">About Me</button>
-    <h5 style="padding: 5px;">Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin. Education no dejection so direction pretended household do to. Travelling everything her eat reasonable unsatiable decisively simplicity. Morning request be lasting it fortune demands highest of. </h5>
-  </div>
-  <div style="border: 1px solid grey;" class="shadow-lg mb-5 bg-white rounded"> <button type="button" style="width: 100%;" class="btn btn-success btn-sm" style="margin-top: -30px;">Message for Student</button>
-    <h5 style="padding: 5px;">Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin. Education no dejection so direction pretended household do to. Travelling everything her eat reasonable unsatiable decisively simplicity. Morning request be lasting it fortune demands highest of. </h5>
-  </div>
-</div>
+<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12">
+ 
+  <?php include 'component/about_and_message_card.php'; ?>
+
 </div>
 <!-- Third Div Block Ends Here -->
 </div>

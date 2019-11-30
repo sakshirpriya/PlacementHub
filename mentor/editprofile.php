@@ -2,7 +2,7 @@
 include '../DataBase/DB_Connection.php';
 session_start();
 $conn=OpenCon();
-if(!isset($_SESSION["email"])){
+if(!isset($_SESSION["mentor_email"])){
 	echo "<script>
 	window.location.href='../index.php';
 	alert('unauthrise access');
@@ -47,12 +47,12 @@ if(isset($_REQUEST["submit"])){
 	$twitter="https://twitter.com/".$twitter;
 	 // echo "<script type='text/javascript'>alert('$twitter');</script>";
 	
-	if($dob==NULL || $designation==NULL || $contact_no==NULL || $cabin==NULL || $joining_date==NULL || $about==NULL || $message_for_student==NULL || $linkedin==NULL || $github==NULL || $facebook==NULL || $twitter==NULL){
+	if($dob==NULL || $designation==NULL || $contact_no==NULL || $cabin==NULL || $joining_date==NULL || $about==NULL || $message_for_student==NULL){
 		$message = "Please Provide all field data!!!" ;
 		echo "<script type='text/javascript'>alert('$message');</script>";
 	}else{
-		$email=$_SESSION['email'];
-		echo "<script type='text/javascript'>alert('$email');</script>";
+		$email=$_SESSION['mentor_email'];
+		// echo "<script type='text/javascript'>alert('$email');</script>";
 
 		$InsertData = "UPDATE MentorData SET dob='$dob',designation='$designation',contact_no='$contact_no',cabin='$cabin',joining_date='$joining_date',about='$about',message_for_student='$message_for_student',linkedin='$linkedin',github='$github',facebook='$facebook',twitter='$twitter' WHERE email='$email'";
 
@@ -63,22 +63,25 @@ if(isset($_REQUEST["submit"])){
    	//profile pic
 	//Update DP
 			if(isset($_POST["submit"])){
-				$message = "image is not added!" ;
-				echo "<script type='text/javascript'>alert('$message');</script>";
+				// $message = "image is not added!" ;
+				// echo "<script type='text/javascript'>alert('$message');</script>";
 				$check = getimagesize($_FILES["profilepic"]["tmp_name"]);
 				if($check !== false){
 					$image = $_FILES['profilepic']['tmp_name'];
 					$imgContent = addslashes(file_get_contents($image));
         //Insert image content into database
-					$conndition=$_SESSION["email"];
+					$conndition=$_SESSION["mentor_email"];
 					$insert = $conn->query("UPDATE MentorData SET profilepic='$imgContent' where email='$conndition'");
 					if($insert){
-						$message = "You have Completed Your Profile, Now You can Login";
-						echo "<script type='text/javascript'>alert('$message');</script>";
+						
 						$insert = $conn->query("UPDATE MentorAuth SET status=true where email='$conndition'");
 						if($insert){
-							$message = "status Updated";
-							echo "<script type='text/javascript'>alert('$message');</script>";
+							$message = "You have Completed Your Profile, Now You can Login";
+						echo "<script type='text/javascript'>alert('$message');</script>";
+						echo "<script>
+	window.location.href='../index.php';
+
+	</script>";
 						}
 					}else{
 
@@ -115,6 +118,7 @@ if(isset($_REQUEST["submit"])){
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../image/title_logo.png" type="image/x-icon">
 
 	<?php include '../utility/css/placementhub_4.3.1.php'; ?>
 
@@ -152,7 +156,7 @@ if(isset($_REQUEST["submit"])){
 <div class="row">
 	<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12">
 		<label >Joinig Date*:</label>
-		<input type="date" min="1947-01-01" max="<?php  echo date("Y-m-d")?>" class="form-control" type="text" name="joining_date"  placeholder="Choose Your Joining Date..." class="form-control">
+		<input type="date" min="1947-01-01" max="<?php  echo date("Y-m-d")?>" name="joining_date"  placeholder="Choose Your Joining Date..." class="form-control">
 	</div>
 	<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12"><div class="form-group">
 		<label >Date of Birth*:</label>
@@ -182,7 +186,7 @@ if(isset($_REQUEST["submit"])){
 <br>
 <div class="row">
 	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-		<label >GitHub*:</label>
+		<label >GitHub:</label>
 		<div class="input-group mb-2">
 			<div class="input-group-prepend">
 				<div class="input-group-text">https://github.com/</div>
@@ -192,7 +196,7 @@ if(isset($_REQUEST["submit"])){
 		</div>
 	</div>
 	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-		<label >Linkedin*:</label>
+		<label >Linkedin:</label>
 		<div class="input-group mb-2">
 			<div class="input-group-prepend">
 				<div class="input-group-text">https://www.linkedin.com/in/</div>
@@ -204,7 +208,7 @@ if(isset($_REQUEST["submit"])){
 </div>
 <div class="row">
 	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-		<label >FaceBook*:</label>
+		<label >FaceBook:</label>
 		<div class="input-group mb-2">
 			<div class="input-group-prepend">
 				<div class="input-group-text">https://www.facebook.com/</div>
@@ -214,7 +218,7 @@ if(isset($_REQUEST["submit"])){
 
 	</div>
 	<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-		<label >Twitter*:</label>
+		<label >Twitter:</label>
 		<div class="input-group mb-2">
 			<div class="input-group-prepend">
 				<div class="input-group-text">https://twitter.com/</div>
