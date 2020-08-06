@@ -27,7 +27,7 @@ if(!isset($_SESSION["student_email"])){
  
  <div class="container">
 <div class="container"><br>
-        <h1 align="center">This Page Contains All Your Pending Request</h1>
+        <h1 align="center">This Page Contains All Mentor Whom You Follow</h1>
         <h4 class="text-center">Please Contact With Admin, If Any Issue</h4><br>
 <?php
  $student_email=$_SESSION["student_email"];
@@ -43,7 +43,7 @@ if($result) {
     }
     else {
         // Print the top of a table
-        echo '<div class="table-responsive text-center"><table class="table table-hover table-striped table-dark""  style="color:white;">
+        echo '<div class="table-responsive text-center"><table class="table table-hover table-striped table-dark" style="color:white;">
   <thead class="thead-dark">
     <tr>
       <th scope="col"><b>Mentor</b></th>
@@ -75,7 +75,7 @@ $Data=mysqli_fetch_array($MentorDataResult);
                         
             // $Mentor=$row['mentorname']?$row['mentorname']:"NA";
             // $RequestMessage=$row['remark']?$row['remark']:"NA";
-            $GiveFeedback="<a href='gd_room.php'><i class='fa fa-clock-o fa-2x' aria-hidden='true' style='color:pink;'></i></i></a>";
+            $GiveFeedback="<a href='MentorRatings/index.php?mentor_email=".$Data["email"]."'><i class='fa fa-clock-o fa-2x' aria-hidden='true' style='color:pink;'></i></i></a>";
            
             echo "
                 <tr>

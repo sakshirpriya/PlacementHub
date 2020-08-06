@@ -110,7 +110,7 @@ echo "
 		<form class='form-inline'>
  	  <div class='col text-center'>
  		<a class='btn btn-info' href='".$URLFORFOLLOW."' style='border-radius: 20px;border: 2px solid grey; width: 110px;'>";echo $followstatus; echo "</a>
- 		<a class='btn btn-info' data-toggle='modal' data-target='#editProfile' style='border-radius: 20px;border: 2px solid grey;width: 110px; '>Know More</a>
+ 		
  	</div>
  	</form>
  		</div>";
@@ -157,7 +157,7 @@ echo "
 		<form class='form-inline'>
  	  <div class='col text-center'>
  		<a class='btn btn-info' href='".$URLFORFOLLOW."' style='border-radius: 20px;border: 2px solid grey; width: 110px;'>";echo $followstatus; echo "</a>
- 		<a class='btn btn-info' data-toggle='modal' data-target='#editProfile' style='border-radius: 20px;border: 2px solid grey;width: 110px; '>Know More</a>
+ 		
  	</div>
  	</form>
  		</div>";
@@ -206,7 +206,7 @@ echo "
 		<form class='form-inline'>
  	  <div class='col text-center'>
  		<a class='btn btn-info' href='".$URLFORFOLLOW."' style='border-radius: 20px;border: 2px solid grey; width: 110px;'>";echo $followstatus; echo "</a>
- 		<a class='btn btn-info' data-toggle='modal' data-target='#editProfile' style='border-radius: 20px;border: 2px solid grey;width: 110px; '>Know More</a>
+ 		
  	</div>
  	</form>
  		</div>";

@@ -206,23 +206,7 @@ $row=mysqli_fetch_array($result);
 
       <!-- Third Div Block Starts Here -->
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-<div class="card ">
-    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2>Take Interview</h2></button>
-    <img src="../image/take_interview.png" height="250px" class="card-img-top" alt="take_Interview">
-    <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>Accept take interview request.</li>
-          <li>Create Zoom Meeting ID.</li>
-          <li>Share time and other details.</li>
-        </ul>
-      </p>
-    </div>
-    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
-  </div>
-
+<?php include 'Notifications/notification.php'; ?>
       </div>
       <!-- Third Div Block Ends Here -->
     </div>

@@ -191,7 +191,7 @@ if(isset($_REQUEST["submit"])){
 			<div class="input-group-prepend">
 				<div class="input-group-text">https://github.com/</div>
 			</div>
-			<input type="text" name="github"  class="form-control" placeholder="NikhilKrDwivedi">
+			<input type="text" name="github"  class="form-control" placeholder="Sakshi.Priya">
 
 		</div>
 	</div>
@@ -201,7 +201,7 @@ if(isset($_REQUEST["submit"])){
 			<div class="input-group-prepend">
 				<div class="input-group-text">https://www.linkedin.com/in/</div>
 			</div>
-			<input type="text" name="linkedin"  class="form-control" placeholder="nikhilkrdwivedi">
+			<input type="text" name="linkedin"  class="form-control" placeholder="Sakshi.Priya">
 
 		</div>
 	</div>
@@ -213,7 +213,7 @@ if(isset($_REQUEST["submit"])){
 			<div class="input-group-prepend">
 				<div class="input-group-text">https://www.facebook.com/</div>
 			</div>
-			<input type="text" name="facebook"  class="form-control" placeholder="NikhilKrDwivedi">
+			<input type="text" name="facebook"  class="form-control" placeholder="Sakshi.Priya">
 		</div>
 
 	</div>
@@ -223,7 +223,7 @@ if(isset($_REQUEST["submit"])){
 			<div class="input-group-prepend">
 				<div class="input-group-text">https://twitter.com/</div>
 			</div>
-			<input type="text" name="twitter"  class="form-control" placeholder="NikhilKrDwivedi">
+			<input type="text" name="twitter"  class="form-control" placeholder="Sakshi.Priya">
 		</div>
 
 	</div>

@@ -127,7 +127,7 @@ window.location.href='student/index.php';
         }
         
       }else{
-        $message = "wrong cridentials for login!!" ;
+        $message = "wrong credentials for login!!" ;
         echo "<script type='text/javascript'>alert('$message');</script>";
       }
     }
@@ -176,7 +176,7 @@ window.location.href='mentor/index.php';
         }
         
       }else{
-        $message = "wrong cridentials for login!!" ;
+        $message = "wrong credentials for login!!" ;
         echo "<script type='text/javascript'>alert('$message');</script>";
       }
     }
@@ -231,7 +231,7 @@ window.location.href='mentor/index.php';
      <!--  <li class="nav-item">
         <a class="nav-link" href="#">INTERNSHIPS</a>
       </li> -->
-       <li class="nav-item dropdown dropdown-hover">
+       <!-- <li class="nav-item dropdown dropdown-hover">
         <a class="nav-link dropdown-toggle" href="internship_list.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Modules
         </a>
@@ -250,7 +250,7 @@ window.location.href='mentor/index.php';
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="#">Other</a>
         </div>
-      </li>
+      </li> -->
       
         <li class="nav-item dropdown dropdown-hover">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -275,7 +275,7 @@ window.location.href='mentor/index.php';
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Please Enter the Cridentials:</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Please Enter the credentials:</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -307,7 +307,7 @@ window.location.href='mentor/index.php';
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Please Enter the Cridentials:</h5>
+        <h5 class="modal-title" id="exampleModalCenterTitle">Please Enter the credentials:</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

@@ -86,27 +86,7 @@ $row=mysqli_fetch_array($result);
 >
     </div>
   </div>
-  <div class="card shadow-lg mb-3 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2 class="float-left">XII Academics</h2><i class="fa fa-pencil fa-2x float-right"  data-toggle="modal" data-target="#XIIData"  style="margin-right: 10px;margin-top: 7px;cursor: -webkit-grab; cursor: grab;" ></i></button><div style="margin-top: 10px;margin-left: 5px">
-<div><i class="fa fa-university fa-2x"></i><span class="datacss"><?php echo $row["xii_school"]; ?></span></div><hr>
-      <div><i class="fa fa-bar-chart fa-2x"></i><span class="datacss"><?php echo $row["xii_percentage"] .'  %'; ?></span></div><hr>
-    <div><i class="fa fa-list-ul fa-2x"></i><span class="datacss"><?php echo $row["xii_board"]; ?></span></div><hr>
-     <div><i class="fa fa-calendar-check-o fa-2x"></i><span class="datacss"><?php echo $row["xii_year"]; ?></span></div>
-     
-            </div>  <br
-      >  
-               
-    
-  </div>
-   <div class="card shadow-lg mb-3 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2 class="float-left">X Academics</h2><i class="fa fa-pencil fa-2x float-right"  data-toggle="modal" data-target="#XData"  style="margin-right: 10px;margin-top: 7px;cursor: -webkit-grab; cursor: grab;" ></i></button>
-     <div style="margin-top: 10px;margin-left: 5px">
-      <div><i class="fa fa-university fa-2x"></i><span class="datacss"><?php echo $row["x_school"]; ?></span></div><hr>
-      <div><i class="fa fa-bar-chart fa-2x"></i><span class="datacss"><?php echo $row["x_percentage"]; ?></span></div><hr>
-    <div><i class="fa fa-list-ul fa-2x"></i><span class="datacss"><?php echo $row["x_board"]; ?></span></div><hr>
-     <div><i class="fa fa-calendar-check-o fa-2x"></i><span class="datacss"><?php echo $row["x_year"]; ?></span></div>
-    </div><br>
-  </div>
+ 
    <div class="card ">
     <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2 class="float-left">Media</h2><i class="fa fa-pencil fa-2x float-right"  data-toggle="modal" data-target="#MediaData"  style="margin-right: 10px;margin-top: 7px;cursor: -webkit-grab; cursor: grab;" ></i></button>
    <div class="text-center">
@@ -148,7 +128,7 @@ $row=mysqli_fetch_array($result);
 <div class="card-deck" style="margin-top: 5px;">
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h3>Mentor List</h3></button>
-    <img src="../image/createtest.png" height="150px" class="card-img-top" alt="create_test">
+    <img src="../image/take_interview.png" height="150px" class="card-img-top" alt="create_test">
    <!--  <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
@@ -208,7 +188,7 @@ $row=mysqli_fetch_array($result);
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h3>Mentor Rating</h3></button>
-    <img src="../image/gdroom.png"  height="150px" class="card-img-top" alt="GD_Room">
+    <img src="../image/ratings.jpeg"  height="150px" class="card-img-top" alt="GD_Room">
   <!--   <div class="card-body">
       <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
@@ -220,11 +200,12 @@ $row=mysqli_fetch_array($result);
       </p>
     </div> -->
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="MentorList.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="http://13.126.165.2/student/MentorList.php">Know More...</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h3>Check CV</h3></button>
-    <img src="../image/cvcheck.png" height="150px" class="card-img-top" alt="cv_check">
+    <button type="button" style="width: 100%;" class="btn btn-info
+     btn-sm"><h3>Take Test</h3></button>
+    <img src="../image/test.jpeg" height="150px" class="card-img-top" alt="cv_check">
   <!--   <div class="card-body">
      <h5 class="card-title"><b>Key Notes:</b></h5>
       <p class="card-text">
@@ -236,7 +217,53 @@ $row=mysqli_fetch_array($result);
       </p>
     </div> -->
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="take_test.php">Know More...</a></button>
+  </div>
+</div>
+
+
+<!-- ************************************************************ -->
+<!-- second three cards start here -->
+<div class="card-deck">
+  <div class="card shadow-lg mb-5 bg-white rounded">
+    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h3>Compiler</h3></button>
+    <img src="../image/compiler.jpeg" height="150px" class="card-img-top" alt="Compiler">
+  
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="http://13.126.165.2/compiler/">Know More...</a></button>
+ 
+  </div>
+  <div class="card shadow-lg mb-5 bg-white rounded">
+    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h3>Success Stories</h3></button>
+    <img src="../image/story.jpeg"  height="150px" class="card-img-top" alt="story">
+  <!--   <div class="card-body">
+      <h5 class="card-title"><b>Key Notes:</b></h5>
+      <p class="card-text">
+        <ul>
+          <li>Create Zoom Meeting ID.</li>
+          <li>Select maximum five students.</li>
+          <li>Share time, topic and rules.</li>
+        </ul>
+      </p>
+    </div> -->
+    
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="http://13.126.165.2/Success/" target="_blank">Know More...</a></button>
+  </div>
+  <div class="card shadow-lg mb-5 bg-white rounded">
+    <button type="button" style="width: 100%;" class="btn btn-info
+     btn-sm"><h3>CV-Maker</h3></button>
+    <img src="../image/cv.png" height="150px" class="card-img-top" alt="cv_check">
+  <!--   <div class="card-body">
+     <h5 class="card-title"><b>Key Notes:</b></h5>
+      <p class="card-text">
+        <ul>
+          <li>Download student CV.</li>
+          <li>Provide feedback on CV.</li>
+          <li>Give others CV for reference.</li>
+        </ul>
+      </p>
+    </div> -->
+   
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="http://13.126.165.2/cv/" target="_blank">Know More...</a></button>
   </div>
 </div>
 
@@ -250,22 +277,7 @@ $row=mysqli_fetch_array($result);
 
       <!-- Third Div Block Starts Here -->
       <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12">
-<div class="card ">
-    <button type="button" style="width: 100%;" class="btn btn-info btn-sm"><h2>Take Interview</h2></button>
-    <img src="../image/take_interview.png" height="250px" class="card-img-top" alt="take_Interview">
-    <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>Accept take interview request.</li>
-          <li>Create Zoom Meeting ID.</li>
-          <li>Share time and other details.</li>
-        </ul>
-      </p>
-    </div>
-    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
-  </div>
+            <?php include 'Notifications/notification.php'; ?>
 
       </div>
       <!-- Third Div Block Ends Here -->
@@ -279,6 +291,3 @@ $row=mysqli_fetch_array($result);
 <?php include '../utility/js/placementhub_4.3.1.php'; ?>
 </body>
 </html>
-<script>
-  
-</script>

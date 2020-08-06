@@ -81,7 +81,7 @@ if($result){
     <option selected>Choose Mentor</option>
     <?php 
      $email =$_SESSION["student_email"];
- echo "<script type='text/javascript'>alert('$email');</script>";
+ //echo "<script type='text/javascript'>alert('$email');</script>";
 
         $Search="SELECT follower_list.mentor_email as mentor_email,MentorData.name as name FROM follower_list INNER JOIN MentorData on follower_list.mentor_email = MentorData.email WHERE student_email='$email' AND follow_status=true";
         $result=mysqli_query($conn,$Search);

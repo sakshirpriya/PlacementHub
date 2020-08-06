@@ -10,7 +10,7 @@
 
 <nav class="navbar  navbar-expand-lg navbar-light bg-light">
   <div class="container">
-   <a class="navbar-brand" href="../index.php">
+   <a class="navbar-brand" href="http://13.126.165.2/student/index.php">
     <img src="http://13.126.165.2/image/logo.png" width="120px" height="60px" class="d-inline-block align-top" alt="PlacementHub">
   </a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,9 +20,38 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
     <ul class="navbar-nav">
      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="http://13.126.165.2/student/index.php">Home <span class="sr-only">(current)</span></a>
       </li>
-     <li class="nav-item dropdown dropdown-hover">
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/compiler/">Compiler</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/cv">CV-Maker</a>
+      </li>
+      <!-- sakshi -->
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/mentor_index.php">MentorList</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/gd_index.php">GD-Room</a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/cvCheck/index.php">CV-Check</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/PI_Request.php">PI-Request</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/MentorList.php">Mentor-Rating</a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/take_test.php">Take-Test</a>
+      </li>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/Success/">Story</a>
+      </li>
+   <!--   <li class="nav-item dropdown dropdown-hover">
       <a class="nav-link dropdown-toggle" href="internship_list.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Modules
       </a>
@@ -43,7 +72,7 @@
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#">Other</a>
       </div>
-    </li>
+    </li> -->
 
     <li class="nav-item dropdown dropdown-hover">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,11 +92,11 @@
        ?> 
      </a>
      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="#" >Edit Profile</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">DashBoard</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="create_test_index.php">Test</a>
+      <a class="dropdown-item" href="http://13.126.165.2/student/editprofile.php" >Edit Profile</a>
+      <!-- <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#">DashBoard</a> -->
+      <!-- <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="create_test_index.php">Test</a> -->
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="../common_files/logout.php">LogOut!!</a>
     </div>

@@ -1,0 +1,149 @@
+   body{
+     background: url('background.jpg');
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: center center;
+     background-size: cover;
+     margin: 0 !important;
+     background-size: 100% cover!important;
+     overflow:hidden;
+     display: block;
+ } 
+ 
+ 
+ .postButtons{                                    
+    position: relative;
+    top: 25%;
+    text-align: center;
+    vertical-align: middle;                                                                      
+    cursor: pointer;
+}
+.middleButtons {
+    font-weight: bold;
+    font-size: 16px;
+    background: #CFB53B;
+    color: #000000;
+    margin: 10px 10px 0px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    cursor: pointer;
+}
+input.middleButtons:hover {
+    color:#fff;
+    background: #3366cc;}
+    
+    .signUp {
+        cursor: pointer;
+    }
+    #newPostTitle {
+       width: 50%;
+       padding: 10px 10px 10px 10px;
+   }
+   #postContent {
+    width: 100%;
+    background: #f1f1f1;
+}
+.newPostBox {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    transition: 0.5s;
+    display: none;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.newPost-Content {
+    position: relative; 
+    width: 70%;
+    margin: 1% auto auto auto; 
+    text-align: left;
+    background-color: #fff;
+    font-family: 'Abel', sans-serif;
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.7);
+    background-color: #fff;
+}
+
+.newPostBox a {
+    
+    text-decoration: none;
+    font-size: 36px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.newPostBox a:hover, .overlay a:focus {
+    color: #f1f1f1;
+}
+
+.newpost-close-button {
+    float: right;
+    font-size: 20px;
+    margin: 0px 0px 0px 0px;
+}
+.close_newPost {
+    position: absolute;
+    right: 20px;
+    /* top: 10px; */
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+}
+
+.close_newPost:hover,
+.close_newPost:focus {
+    color: #f44336;
+    cursor: pointer;
+}
+
+@media screen and (max-height: 450px) {
+  .newPostBox {overflow-y: auto;}
+  .newPostBox a {font-size: 20px}
+  .newPostBox .newpost-close-button {
+    font-size: 40px;
+    top: 10px;
+    right: 25px;
+}
+}
+#formHeader {
+    text-align: center;
+    margin: 0px 0px 0px 0px;
+    font-family: 'Abel', sans-serif;
+    padding: 10px;
+}
+#newPostForm {
+    padding: 0px 50px 0px 50px;
+    font-family: 'Abel', sans-serif;
+    font-size: 18px;
+}
+#newPostSubmit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 10px 10px 10px;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+    opacity: 0.9;
+    margin-left: 46%;
+    text-align: center;
+    margin-top: 8px;
+    font-size: 15px;
+}
+
+#main-container-div{
+    height: 100%;
+    width: 100%;
+    display: block;
+    position: absolute;
+}
+@media screen and (max-width: 450px) {
+    .newPostSubmit {
+        width: 100%;
+    }
+}
+

@@ -42,14 +42,14 @@ if($_GET['mentor_email'] && $_GET['subject_name']);
 		WHERE mentor_email='$mentor_email' and student_email='$student_email' and subject_name='$subject_name'";
 
 		if(mysqli_query($conn,$updateFollowStatus) && $followCode==1){
-			$message ="You start following him!!!";
+			$message ="You start following her/him!!!";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 			echo "<script>
 			window.location.href='mentor_index.php';
 			</script>";
 		}else{
 			if(mysqli_query($conn,$updateFollowStatus)){
-				$message ="You unfollowed him!!!";
+				$message ="You unfollowed her/him!!!";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 			echo "<script>
 			window.location.href='mentor_index.php';
@@ -62,7 +62,7 @@ if($_GET['mentor_email'] && $_GET['subject_name']);
 		$todayDate=date("Y-m-d");
 		$insert="INSERT INTO follower_list (mentor_email,student_email, subject_name,follow_status,follow_date) values ('$mentor_email','$student_email','$subject_name',true,'$todayDate')";
 		if(mysqli_query($conn,$insert)){
-			$message ="You start following him!!!";
+			$message ="You start following her/him!!!";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 			echo "<script>
 			window.location.href='mentor_index.php';

@@ -10,7 +10,7 @@
 
 <nav class="navbar  navbar-expand-lg navbar-light bg-light">
   <div class="container">
-   <a class="navbar-brand" href="../index.php">
+   <a class="navbar-brand" href="http://13.126.165.2/mentor/index.php">
     <img src="http://13.126.165.2/image/logo.png" width="120px" height="60px" class="d-inline-block align-top" alt="PlacementHub">
   </a>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,28 +20,30 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
     <ul class="navbar-nav">
      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="http://13.126.165.2/mentor/index.php">Home <span class="sr-only">(current)</span></a>
       </li>
-     <li class="nav-item dropdown dropdown-hover">
-      <a class="nav-link dropdown-toggle" href="internship_list.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Modules
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Interview</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Practice</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="create_test_index.php">Add Test</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Mentors</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Company</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Build CV</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Other</a>
-      </div>
-    </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/mentor/create_test_index.php">Create-Test<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/mentor/gd_index.php">GD-Room<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/mentor/cvCheck/index.php">Check-CV<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/mentor/PI_Request.php">Take-PI<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/mentor/Notification.php">Notifications<span class="sr-only">(current)</span></a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/mentor/ViewRatings/ViewRatings.php">Ratings<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/mentor/add_subject.php">Add-Subject<span class="sr-only">(current)</span></a>
+      </li>
+    
 
     <li class="nav-item dropdown dropdown-hover">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -61,13 +63,7 @@
        ?> 
      </a>
      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="#" >Edit Profile</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">DashBoard</a>
-      <div class="dropdown-divider"></div>
-       <a class="dropdown-item" href="add_subject.php">Add Your Subject</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="create_test_index.php">Test</a>
+      <a class="dropdown-item" href="http://13.126.165.2/mentor/editprofile.php" >Edit Profile</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="../common_files/logout.php">LogOut!!</a>
     </div>
