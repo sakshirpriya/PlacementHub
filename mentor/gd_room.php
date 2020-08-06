@@ -91,7 +91,7 @@ if($gd_room_name==NULL || $date == NULL || $time ==NULL || $zoom_id ==NULL || $s
     $insert="INSERT INTO gd_room_creator (email,gd_room_name,student_1,student_2,student_3,student_4,student_5,zoom_id,topic,date,time) VALUES ('$email','$gd_room_name','$student1','$student2','$student3','$student4','$student5','$zoom_id','$gd_topic','$date','$time')";
     if(mysqli_query($conn,$insert)){
       unset($_SESSION["gd_room_session"]);
-      $message="congratulations! You hahve successfully created gr room.... ";
+      $message="congratulations! You have successfully created gd room.... ";
   echo "<script type='text/javascript'>alert('$message');</script>";
 }else{
   $message="something went wrong, Please try again...";

@@ -9,6 +9,23 @@ if(!isset($_SESSION["student_email"])){
     </script>";
     
 }
+
+// ***************************************************************//
+   // Make sure an ID was passed
+    if(isset($_GET['mentor_email'])) {
+    // Get the ID
+        $mentor_email =$_GET['mentor_email'];
+    }
+    else {
+    echo "<script>
+    window.location.href='http://13.126.165.2/student/MentorList.php';
+    alert('Error! No ID was passed.');
+    </script>";      
+    }
+    
+       
+
+// **************************************************************//
 if(isset($_REQUEST["submit"])){
     $Knowledge=round($_REQUEST["Knowledge"], 1);
     $Skill=round($_REQUEST["Skill"], 1);
@@ -18,11 +35,12 @@ if(isset($_REQUEST["submit"])){
     $Feedback=$_REQUEST["Feedback"];
     $checkForPublish=$_REQUEST["check"];
     $checkIfZero=round(floatval(0), 1);
+    $Total=$Skill+$Knowledge+$Behaviour+$Availability+$Interactions;
     if($Skill===$checkIfZero || $Knowledge === $checkIfZero || $Behaviour === $checkIfZero || $Availability===$checkIfZero || $Interactions===$checkIfZero){
         $Message="You cant leave blank in ratings.";
     echo "<script type='text/javascript'>alert('$Message');</script>";
     }else{
-        $mentor_email="text@gmail.com";
+        // $mentor_email="text@gmail.com";
         $student_email=$_SESSION["student_email"];
         $showCommentToPublicDomain=($checkForPublish==="on")?1:0;
     $Search="SELECT COUNT(*) as total from MentorRatings WHERE student_email='$student_email' AND mentor_email='$mentor_email'";
@@ -40,6 +58,7 @@ if(isset($_REQUEST["submit"])){
             Interactions=$Interactions,
             Behaviour=$Behaviour,
             Feedback='$Feedback',
+            Total=$Total,
             checkForPublish=$showCommentToPublicDomain WHERE student_email='$student_email' AND mentor_email='$mentor_email'
             ";
             if(mysqli_query($conn,$UpdateRatings)){
@@ -53,12 +72,12 @@ if(isset($_REQUEST["submit"])){
     echo "<script type='text/javascript'>alert('$Message');</script>";
             }
   }else{
-      $Message="Thiis is Insert";
-    echo "<script type='text/javascript'>alert('$Message');</script>";
+    //   $Message="This is Insert";
+    // echo "<script type='text/javascript'>alert('$Message');</script>";
 
  $InsertRatings="INSERT INTO MentorRatings (mentor_email,student_email,Knowledge,Skill,Availability,
- Interactions,Behaviour,Feedback,checkForPublish) VALUES ('$mentor_email','$student_email',$Knowledge,$Skill,
-$Availability,$Interactions,$Behaviour,'$Feedback',$showCommentToPublicDomain)";
+ Interactions,Behaviour,Feedback,Total,checkForPublish) VALUES ('$mentor_email','$student_email',$Knowledge,$Skill,
+$Availability,$Interactions,$Behaviour,'$Feedback',$Total,$showCommentToPublicDomain)";
     // $InsertRatings="INSERT INTO `MentorRatings` (`mentor_email`, `student_email`, `Knowledge`, `Skill`, `Behaviour`, `Availability`, `Interactions`, `Feedback`, `checkForPublish`) VALUES ('az@gmail.com', 'a@gmail.com', 8.5, 7.5, 6.5, 4.5, 10, 'ok', '1')";
             if(mysqli_query($conn,$InsertRatings)){
                $Message="Your ratings are updated!!!.";
@@ -145,33 +164,39 @@ $Availability,$Interactions,$Behaviour,'$Feedback',$showCommentToPublicDomain)";
     <span class="navbar-toggler-icon"></span>
   </button>
   <!-- <a class="navbar-brand" href="#">Fixed navbar</a> -->
-  <div class="collapse navbar-collapse " style="margin-left: 800px;"id="navbarCollapse">
+  <div class="collapse navbar-collapse " style="margin-left: 100px;"id="navbarCollapse">
     <ul class="navbar-nav" >
      <li class="nav-item active">
-        <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="http://13.126.165.2/student/index.php">Home <span class="sr-only">(current)</span></a>
       </li>
-     <li class="nav-item dropdown dropdown-hover">
-      <a class="nav-link dropdown-toggle" href="internship_list.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Modules
-      </a>
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a class="dropdown-item" href="#">Request Interview</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="http://13.126.165.2/student/MentorRatings/index.php">Rate Mentor</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Practice</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Take Test</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Find Mentors</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Company Bio</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Build CV</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="#">Other</a>
-      </div>
-    </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/compiler/">Compiler</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/cv">CV-Maker</a>
+      </li>
+      <!-- sakshi -->
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/mentor_index.php">MentorList</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/gd_index.php">GD-Room</a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/cvCheck/index.php">CV-Check</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/PI_Request.php">PI-Request</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/MentorList.php">Mentor-Rating</a>
+      </li>
+       <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/student/take_test.php">Take-Test</a>
+      </li>
+     <li class="nav-item active">
+        <a class="nav-link" href="http://13.126.165.2/Success/">Story</a>
+      </li>
 
     <li class="nav-item dropdown dropdown-hover">
       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -191,13 +216,13 @@ $Availability,$Interactions,$Behaviour,'$Feedback',$showCommentToPublicDomain)";
        ?> 
      </a>
      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-      <a class="dropdown-item" href="#" >Edit Profile</a>
+      <a class="dropdown-item" href="../editprofile.php" >Edit Profile</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">DashBoard</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="create_test_index.php">Test</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="../common_files/logout.php">LogOut!!</a>
+      <!-- <a class="dropdown-item" href="#">DashBoard</a> -->
+      <!-- <div class="dropdown-divider"></div> -->
+      <!-- <a class="dropdown-item" href="create_test_index.php">Test</a> -->
+      <!-- <div class="dropdown-divider"></div> -->
+      <a class="dropdown-item" href="../../common_files/logout.php">LogOut!!</a>
     </div>
   </li>
 </ul>
@@ -208,17 +233,29 @@ $Availability,$Interactions,$Behaviour,'$Feedback',$showCommentToPublicDomain)";
 
         <!-- ************************************* -->
         <div class="container" style="margin-top: 50px;">
+          <?php
+    $SearchMentorData="SELECT * FROM MentorData WHERE email='$mentor_email'";
+     $Data=mysqli_query($conn,$SearchMentorData);
+          $Data=mysqli_fetch_array($Data);
+
+          ?>
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
             <div class="text-center" style="grey;">
-                <img src="1.jpg" width="160" height="160" style="border-radius: 50%;">
+                <?php 
+          echo '  
+
+         <img src="data:image/jpeg;base64,'.base64_encode($Data['profilepic'] ).'" class="rounded-circle" height="100px" width="100px" class="img-thumnail" />  
+
+         ';  
+                ?>
             </div>
         </div>
     </div>
     <div class="text-center">
-        <h2>Bootstrap star rating example by Sakshi Priya</h2>
+        <h2><?php echo $Data["name"]; ?></h2>
     <br/>
-    <form> 
+    <form method="POST"> 
             <fieldset class="scheduler-border">
     <legend class="scheduler-border">Give a rating for Skill:</legend>      
    <!-- <label for="input-1" class="control-label labelCss"></label> -->

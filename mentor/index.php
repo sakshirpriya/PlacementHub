@@ -10,6 +10,27 @@ if(!isset($_SESSION["mentor_email"])){
 }
  // $message =$_SESSION["email"];
  // echo "<script type='text/javascript'>alert('$message');</script>";
+if(isset($_REQUEST["notify"])){
+  $date= date("Y-m-d");
+  $time=date("H:m:s");
+  $mentor_email=$_SESSION["mentor_email"];
+ 
+  $Notification=$_REQUEST["Notification"];
+  if($Notification){
+    $Insert="INSERT INTO Notifications (mentor_email,notification,date,time)VALUES ('$mentor_email','$Notification','$date','$time')";
+    if(mysqli_query($conn,$Insert)){
+      $message="We Pushed Your Notification To All Students.";
+  echo "<script type='text/javascript'>alert('$message');</script>";
+}else{
+  $message="Something Went Wrong, Please Try Again!!!";
+  echo "<script type='text/javascript'>alert('$message');</script>";
+}
+  
+  }else{
+  $message ="Please Add Notification Message, It Can not Empty";
+  echo "<script type='text/javascript'>alert('$message');</script>";
+  }
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,6 +47,7 @@ if(!isset($_SESSION["mentor_email"])){
 	<hr>
   <div class="container-fluid">
 
+
     <!-- Main Body Start here -->
     <div class="row">
       <!-- first Dev Block starts here -->
@@ -35,47 +57,15 @@ if(!isset($_SESSION["mentor_email"])){
     <!-- first Dev Block ends here -->
 
 
-
     <!-- second Div Block starts Here -->
     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-     <div class="card-deck">
-      <div class="card shadow-lg mb-5 bg-white rounded">
-        <div class="card-body">
-          <p class="card-title" style="margin-top: -15px;"><h2 class="text-center" style="font-weight: bold;">Tests</h2></p><hr>
-          <p class="card-title text-center" style="margin-top: -20px; font-size: 55px; font-weight: bold;">15159</p>
-        </div>
-        <button type="button" class="btn btn-danger btn-sm" style="margin-top: -30px;">Know More...</button>
-      </div>
-
-      <div class="card shadow-lg mb-5 bg-white rounded">
-        <div class="card-body">
-         <p class="card-title" style="margin-top: -15px;"><h2 class="text-center" style="font-weight: bold;">Followers</h2></p><hr>
-         <p class="card-title text-center" style="margin-top: -20px; font-size: 55px; font-weight: bold;">988</p>
-       </div>
-       <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
-     </div>
-     <div class="card shadow-lg mb-5 bg-white rounded">
-      <div class="card-body">
-       <p class="card-title" style="margin-top: -15px;"><h2 class="text-center" style="font-weight: bold;">Interviews</h2></p><hr>
-       <p class="card-title text-center" style="margin-top: -20px; font-size: 55px; font-weight: bold;">1562</p>
-     </div>
-     <button type="button" class="btn btn-primary btn-sm" style="margin-top: -30px;">Know More...</button>
-   </div>
-
-   <div class="card shadow-lg mb-5 bg-white rounded">
-    <div class="card-body">
-    	<p class="card-title" style="margin-top: -15px;"><h2 class="text-center" style="font-weight: bold;">Ratings</h2></p><hr>
-      <p class="card-title text-center" style="margin-top: -20px; font-size: 55px; font-weight: bold;">9.92</p>
-    </div>
-    <button type="button" class="btn btn-success btn-sm" style="margin-top: -30px;">Know More...</button>
-  </div>
-</div>
+<?php include 'HeaderDashboard/HeaderDashBoard.php'; ?>
 <form> 
 	<div class="form-group">
     <label for="exampleFormControlTextarea1"><h3>Push Notification to all Students.{<b>Only Followers.</b>}</h3></label>
-    <textarea class="form-control shadow-lg mb-3 bg-white rounded" id="exampleFormControlTextarea1" rows="4"></textarea>
+    <textarea class="form-control shadow-lg mb-3 bg-white rounded" name="Notification" rows="4"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary float-right">Submit</button>
+  <button type="submit" name="notify" class="btn btn-primary float-right">Submit</button>
 </form><br><br>
 <br>
 <!-- Mentor command start here -->
@@ -83,51 +73,24 @@ if(!isset($_SESSION["mentor_email"])){
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Create Test</h2></button>
     <img src="../image/createtest.png" height="250px" class="card-img-top" alt="create_test">
-    <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>You can create different kind of test.</li>
-          <li>You need to set marking schema.</li>
-          <li>Every test will have separate dashboard.</li>
-        </ul>
-      </p>
-    </div>
+    
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="create_test_index.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="create_test_index.php" style="color: white;">CHECK ALL</a></button>
  
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>GD Room</h2></button>
     <img src="../image/gdroom.png"  height="250px" class="card-img-top" alt="GD_Room">
-    <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>Create Zoom Meeting ID.</li>
-          <li>Select maximum five students.</li>
-          <li>Share time, topic and rules.</li>
-        </ul>
-      </p>
-    </div>
     
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_index.php">Know More...</a></button>
+    
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="gd_index.php" style="color: white;">CHECK ALL</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Check CV</h2></button>
     <img src="../image/cvcheck.png" height="250px" class="card-img-top" alt="cv_check">
-    <div class="card-body">
-     <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>Download student CV.</li>
-          <li>Provide feedback on CV.</li>
-          <li>Give others CV for reference.</li>
-        </ul>
-      </p>
-    </div>
+    
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="cvCheck/index.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="cvCheck/index.php" style="color: white;">CHECK ALL</a></button>
   </div>
 </div>
 <!-- ************************************************** -->
@@ -136,40 +99,21 @@ if(!isset($_SESSION["mentor_email"])){
     <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Take Interview</h2></button>
     <img src="../image/take_interview.png" height="250px" class="card-img-top" alt="take_Interview">
        
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="PI_Request.php">Know More...</a></button>
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="PI_Request.php" style="color: white;">CHECK ALL</a></button>
   </div>
-  <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Must Do Ques</h2></button>
+ <div class="card shadow-lg mb-5 bg-white rounded">
+    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Notifications</h2></button>
     <img src="../image/must_do_ques.jpg"  height="250px" class="card-img-top" alt="must_do_ques">
-    <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>Provide set of questions.</li>
-          <li>Add tags related to questions.</li>
-          <li>Set level of question.</li>
-        </ul>
-      </p>
-    </div>
+    
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+     <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;"><a href="Notification.php" style="color: white;">CHECK ALL</a></button>
   </div>
   <div class="card shadow-lg mb-5 bg-white rounded">
-    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>Search</h2></button>
+    <button type="button" style="width: 100%;" class="btn btn-warning btn-sm"><h2>View Ratings</h2></button>
     <img src="../image/search.jpg" height="250px" class="card-img-top" alt="search">
-    <div class="card-body">
-      <h5 class="card-title"><b>Key Notes:</b></h5>
-      <p class="card-text">
-        <ul>
-          <li>Search students on the basis of keywords.</li>
-          <li>Search students performance.</li>
-          <li>Search with advance filters.</li>
-
-        </ul>
-      </p>
-    </div>
    
-      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
+   
+      <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px; "><a href="ViewRatings/ViewRatings.php" style="color: white;">CHECK ALL</a></button>
   </div>
 </div>
 <!-- Mentor command end here -->

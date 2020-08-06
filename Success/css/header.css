@@ -1,0 +1,188 @@
+* {box-sizing: border-box}
+/* Full-width input fields */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+button:hover {
+ opacity:1;
+}
+input.topButtons {
+ width: 90px;
+ padding: 10px;
+ cursor: pointer;
+ font-weight: 500;
+ font-size: 90%;
+ background: #0000ff;
+ color: #fff;
+ float: right;                  
+ 
+ margin: 10px 10px 0px 0px;
+ font-family: Arial, Helvetica, sans-serif;
+}
+input.topButtons:hover {
+ color:#000;
+ background: #CFB53B;
+  }
+
+
+/* Extra styles for the cancel button */
+ .cancelbtn {
+     padding: 14px 20px;
+     background-color: #f44336;
+ }
+ 
+ /* Float cancel and signup buttons and add an equal width */
+ .cancelbtn, .signinbtn, .signupbtn {
+     float: left;
+     width: 100%;
+ }
+ 
+ /* Add padding to container elements */
+ .container {
+     padding: 5px 16px 16px 16px;  
+ }
+ 
+ /* The Modal (background) */
+ .modal {
+     display: none; /* Hidden by default */
+     position: fixed; /* Stay in place */
+     z-index: 1; /* Sit on top */
+     left: 0;
+     top: 0;
+     width: 100%; /* Full width */
+     height: 100%; /* Full height */
+     overflow: auto; /* Enable scroll if needed */
+     padding-top: 25px;
+     opacity: 1;
+     background-color: rgba(0,0,0,0.7);
+ }
+ 
+ 
+ .modal-content {
+     background-color: #fefefe;
+     margin: 5% auto 15% auto; 
+     border: 1px solid #fff;
+     width: 30%; 
+     opacity: 1;
+     overflow: hidden;
+     color: #000;
+     
+     }
+ 
+ 
+ hr {
+     
+     margin-bottom: 25px;
+ }
+     
+ .close {
+     padding-top: 5px;
+     position: relative;
+     float: right;
+     font-size: 35px;
+     font-weight: bold;
+     color: #818181;
+     }
+ 
+ .close:hover,
+ .close:focus {
+     color: #f44336;
+     cursor: pointer;
+ }
+ 
+     .close_signIn {
+     padding-top: 5px; 
+     padding-right: 7px; 
+     position: relative;
+     float: right;
+     font-size: 35px;
+     font-weight: bold;
+     color: #818181;
+     font-family: 'Abel', sans-serif;
+     }
+
+     .close_signIn:hover,
+     .close_signIn:focus {
+         color: #f44336;
+         cursor: pointer;
+     }   
+ /* Clear floats */
+ .clearfix::after {
+     content: "";
+     clear: both;
+     display: table;
+ }
+ .modal-content-sigup{
+     background-color: #fefefe;
+     margin: auto auto 5% auto;
+     border: 1px solid #fff;
+     width: 30%;
+     opacity: 1;
+     overflow: auto;
+     font-family: 'Abel', sans-serif;
+     font-size: 15px;
+     padding: 0 20px 20px 20px;
+     color: #000;
+     }
+ .label {
+     letter-spacing: 0.5px;
+     font-family: 'Abel', sans-serif;
+     font-size: 16px;
+     font-weight: 600;
+ }
+ .signUpForm {
+     margin: 10px 10px 30px 20px;
+     text-align: center;
+     font-family: Arial, Helvetica, sans-serif;
+     font-weight: bold;
+ }                            
+ .signUp{
+     color: #0000ff;
+     }
+ /* Change styles for cancel button and signup button on extra small screens */
+ @media screen and (max-width: 300px) {
+     .cancelbtn, .signinbtn, .signupbtn {
+         width: 100%;
+     }
+ }
+
+.logo-title {
+font-family: 'Satisfy', cursive;
+font-size: 50px;
+color: #112fb4;
+margin: auto;
+text-decoration: none;
+margin: 10px 10px 0px 10px;    
+}
+h1{
+    text-align: center;
+    font-family: 'Abel', sans-serif;
+}
+.middleText{
+    font-family: 'Marck Script', cursive;
+    margin-top: 0;
+    margin: 0 0 0px 10px;
+    }

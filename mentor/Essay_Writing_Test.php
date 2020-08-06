@@ -117,7 +117,7 @@ if(isset($_REQUEST["add_essay_test"])){
     echo ' <div align="right" style="margin-bottom:5px;"><form method="POST">
       <button type="submit" name="reset_essay_test" class="btn btn-danger btn-xs">Reset Test</button>
 
-     <button type="button" name="add" id="add" class="btn btn-info btn-xs">+ Question</button></form>
+    </form>
    </div>
    <br />
    

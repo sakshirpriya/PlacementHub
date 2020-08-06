@@ -43,38 +43,7 @@ if(!isset($_SESSION["mentor_email"])){
 
     <!-- second Div Block starts Here -->
     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
-     <div class="card-deck">
-      <div class="card shadow-lg mb-5 bg-white rounded">
-        <div class="card-body">
-          <p class="card-title" style="margin-top: -15px;"><h2 class="text-center" style="font-weight: bold;">Tests</h2></p><hr>
-          <p class="card-title text-center" style="margin-top: -20px; font-size: 55px; font-weight: bold;">15159</p>
-        </div>
-        <button type="button" class="btn btn-danger btn-sm" style="margin-top: -30px;">Know More...</button>
-      </div>
-
-      <div class="card shadow-lg mb-5 bg-white rounded">
-        <div class="card-body">
-         <p class="card-title" style="margin-top: -15px;"><h2 class="text-center" style="font-weight: bold;">Followers</h2></p><hr>
-         <p class="card-title text-center" style="margin-top: -20px; font-size: 55px; font-weight: bold;">988</p>
-       </div>
-       <button type="button" class="btn btn-info btn-sm" style="margin-top: -30px;">Know More...</button>
-     </div>
-     <div class="card shadow-lg mb-5 bg-white rounded">
-      <div class="card-body">
-       <p class="card-title" style="margin-top: -15px;"><h2 class="text-center" style="font-weight: bold;">Interviews</h2></p><hr>
-       <p class="card-title text-center" style="margin-top: -20px; font-size: 55px; font-weight: bold;">1562</p>
-     </div>
-     <button type="button" class="btn btn-primary btn-sm" style="margin-top: -30px;">Know More...</button>
-   </div>
-
-   <div class="card shadow-lg mb-5 bg-white rounded">
-    <div class="card-body">
-      <p class="card-title" style="margin-top: -15px;"><h2 class="text-center" style="font-weight: bold;">Ratings</h2></p><hr>
-      <p class="card-title text-center" style="margin-top: -20px; font-size: 55px; font-weight: bold;">9.92</p>
-    </div>
-    <button type="button" class="btn btn-success btn-sm" style="margin-top: -30px;"><a href="">Know More...</a></button>
-  </div>
-</div>
+<?php include 'HeaderDashboard/HeaderDashBoard.php'; ?>
 
 <br>
 <!-- Mentor command start here -->

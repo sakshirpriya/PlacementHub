@@ -219,9 +219,6 @@
     
 
 echo "     
-<div class='text-center'>
-  <button type='submit' name='submit' class='btn btn-lg btn-success'>Update Data!!!</button>
-</div>
 </fieldset>
 </form>";
 

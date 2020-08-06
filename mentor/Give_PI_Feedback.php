@@ -25,17 +25,17 @@
    
     $id = intval($_GET['id']);
     $knowledge=intval($_REQUEST["knowledge"]);
-    echo"<script>alert('$knowledge');</script>";
+    //echo"<script>alert('$knowledge');</script>";
     $confidenece=intval($_REQUEST["confidenece"]);
-    echo"<script>alert('$confidenece');</script>";
+    //echo"<script>alert('$confidenece');</script>";
     $attitude=intval($_REQUEST["attitude"]);
-    echo"<script>alert('$attitude');</script>";
+    //echo"<script>alert('$attitude');</script>";
     $presentation=intval($_REQUEST["presentation"]);
-    echo"<script>alert('$presentation');</script>";
+    //echo"<script>alert('$presentation');</script>";
     $skills=intval($_REQUEST["skills"]);
-    echo"<script>alert('$skills');</script>";
+    //echo"<script>alert('$skills');</script>";
     $total=$knowledge+$confidenece+$attitude+$presentation+$skills;
-    echo"<script>alert('$total');</script>";
+    //echo"<script>alert('$total');</script>";
     $feedback_remark=$_REQUEST["feedback_remark"];
     if($knowledge > 20 || $confidenece > 20 || $attitude > 20 || $presentation > 20 || $skills > 20 || $knowledge==NULL || $confidenece==NULL || $attitude==NULL || $presentation==NULL || $skills==NULL){
         $message="Marks cant greater than 20 OR empty!!!";

@@ -108,7 +108,7 @@ $updateData="UPDATE cvcheckUpload SET mentorcvname='$mentorcvname',mentorfiletyp
         }
         else {
             
-                $message="An error accured while the file was being uploaded!!!";
+                $message="Uploaded Your Feedback";
                 echo "<script type='text/javascript'>alert('$message');</script>";
                 echo "<script>
         window.location.href='index.php';
